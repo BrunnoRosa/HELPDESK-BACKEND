@@ -19,13 +19,21 @@ public class FuncionarioService {
     @Autowired
     private FuncionarioRepository repository;
 
+    // Construtor definido no FuncionarioResponseDTO para trazer mais simplicidade ao Service
     public List<FuncionarioResponseDTO> listar(){
-        return repository.findAll().stream()
-                .map(FuncionarioModel --> new FuncionarioResponseDTO(FuncionarioResponseDTO.getNome(),
-                        FuncionarioResponseDTO.getEmail(),
-                        FuncionarioResponseDTO.getFuncao(),
-                        FuncionarioResponseDTO.getPerfil())).toList();
+        return repository.findAll().stream().map(FuncionarioResponseDTO::new)
+                .toList();
     }
+//Antiga forma de listar os gets vindo do FuncionarioResponseDTO
+//    public List<FuncionarioResponseDTO> listar(){
+//        return repository.findAll().stream().map(funcionario -> new FuncionarioResponseDTO(
+//                        funcionario.getNome(),
+//                        funcionario.getEmail(),
+//                        funcionario.getFuncao(),
+//                        funcionario.getPerfil()))
+//                .toList();
+//    }
+
     public FuncionarioModel salvar(FuncionarioRequestDTO salvarDTO){
         if(repository.findByEmail(salvarDTO.getEmail()).isPresent()){
             throw new RuntimeException("Funcionário já Cadastrado ❌");
@@ -48,7 +56,6 @@ public class FuncionarioService {
                 throw new RuntimeException("Funcionário já Cadastrado. ❌");
             }
         });
-        FuncionarioModel novoCadastro = new FuncionarioModel();
         novoCadastro.setNome(atualizarDTO.getNome());
         novoCadastro.setEmail(atualizarDTO.getEmail());
         novoCadastro.setFuncao(atualizarDTO.getFuncao());

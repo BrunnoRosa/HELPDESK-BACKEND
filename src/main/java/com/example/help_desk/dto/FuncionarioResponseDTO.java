@@ -1,5 +1,6 @@
 package com.example.help_desk.dto;
 
+import com.example.help_desk.model.FuncionarioModel;
 import com.example.help_desk.model.enums.Funcionario;
 import com.example.help_desk.model.enums.Perfil;
 
@@ -9,6 +10,9 @@ public class FuncionarioResponseDTO {
     private Funcionario funcao;
     private Perfil perfil;
 
+    public FuncionarioResponseDTO() {
+    }
+
     public FuncionarioResponseDTO(String nome, String email, Funcionario funcao, Perfil perfil) {
         this.nome = nome;
         this.email = email;
@@ -16,10 +20,14 @@ public class FuncionarioResponseDTO {
         this.perfil = perfil;
     }
 
-    public FuncionarioResponseDTO() {
+    public FuncionarioResponseDTO(FuncionarioModel funcionario) {
+        this.nome = funcionario.getNome();
+        this.email = funcionario.getEmail();
+        this.funcao = funcionario.getFuncao();
+        this.perfil = funcionario.getPerfil();
     }
 
-    public static String getNome() {
+    public String getNome() {
         return nome;
     }
 
@@ -27,7 +35,7 @@ public class FuncionarioResponseDTO {
         this.nome = nome;
     }
 
-    public static String getEmail() {
+    public String getEmail() {
         return email;
     }
 
@@ -35,7 +43,7 @@ public class FuncionarioResponseDTO {
         this.email = email;
     }
 
-    public static Funcionario getFuncao() {
+    public Funcionario getFuncao() {
         return funcao;
     }
 
@@ -43,7 +51,7 @@ public class FuncionarioResponseDTO {
         this.funcao = funcao;
     }
 
-    public static Perfil getPerfil() {
+    public Perfil getPerfil() {
         return perfil;
     }
 
