@@ -5,20 +5,13 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="ff651c6e-3cfa-49c4-863d-98bd77272376" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/.idea/compiler.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/encodings.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/jarRepositories.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/example/help_desk/controller/FuncionarioController.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/example/help_desk/dto/FuncionarioResponseDTO.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/example/help_desk/dto/FuncionatioRequestDTO.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/example/help_desk/model/FuncionarioModel.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/example/help_desk/model/enums/Funcionario.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/example/help_desk/model/enums/Perfil.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/example/help_desk/repository/FuncionarioRepository.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/example/help_desk/service/FuncionarioService.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/uiDesigner.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/example/help_desk/dto/FuncionarioRequestDTO.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/help_desk/dto/FuncionarioResponseDTO.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/help_desk/dto/FuncionarioResponseDTO.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/help_desk/dto/FuncionatioRequestDTO.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/help_desk/repository/FuncionarioRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/help_desk/repository/FuncionarioRepository.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/help_desk/service/FuncionarioService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/help_desk/service/FuncionarioService.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -52,6 +45,7 @@
   <component name="PropertiesComponent"><![CDATA[{
   "keyToString": {
     "RunOnceActivity.ShowReadmeOnStart": "true",
+    "SHARE_PROJECT_CONFIGURATION_FILES": "true",
     "git-widget-placeholder": "geo-backend",
     "kotlin-language-version-configured": "true"
   }
