@@ -5,9 +5,24 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="ff651c6e-3cfa-49c4-863d-98bd77272376" name="Changes" comment="">
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/example/help_desk/controller/ChamadoController.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/example/help_desk/dto/chamado/ChamadoRequestDTO.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/example/help_desk/dto/chamado/ChamadoResponseDTO.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/example/help_desk/model/ChamadoModel.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/example/help_desk/model/enums/Criticidade.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/example/help_desk/model/enums/Ocorrencia.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/example/help_desk/repository/ChamadoRepository.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/example/help_desk/service/ChamadoService.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/example/help_desk/controller/FuncionarioController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/help_desk/controller/FuncionarioController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/help_desk/dto/FuncionarioRequestDTO.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/help_desk/dto/FuncionarioRequestDTO.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/help_desk/dto/FuncionarioRequestDTO.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/help_desk/dto/funcionario/FuncionarioRequestDTO.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/help_desk/dto/FuncionarioResponseDTO.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/help_desk/dto/funcionario/FuncionarioResponseDTO.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/help_desk/model/FuncionarioModel.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/help_desk/model/FuncionarioModel.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/help_desk/service/FuncionarioService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/help_desk/service/FuncionarioService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/example/help_desk/controller/FuncionarioController.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/example/help_desk/controller/FuncionarioController.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/example/help_desk/dto/FuncionarioRequestDTO.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/example/help_desk/dto/FuncionarioResponseDTO.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/example/help_desk/service/FuncionarioService.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/example/help_desk/service/FuncionarioService.class" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -18,25 +33,29 @@
     <option name="RECENT_TEMPLATES">
       <list>
         <option value="Interface" />
-        <option value="Class" />
         <option value="Enum" />
+        <option value="Class" />
       </list>
     </option>
   </component>
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
-  <component name="GitHubPullRequestSearchHistory"><![CDATA[{
-  "lastFilter": {
-    "state": "OPEN",
-    "assignee": "GeovaneFerreira26"
+  <component name="GitHubPullRequestSearchHistory">{
+  &quot;lastFilter&quot;: {
+    &quot;state&quot;: &quot;OPEN&quot;,
+    &quot;assignee&quot;: &quot;GeovaneFerreira26&quot;
   }
-}]]></component>
-  <component name="GithubPullRequestsUISettings"><![CDATA[{
-  "selectedUrlAndAccountId": {
-    "url": "https://github.com/BrunnoRosa/HELPDESK-BACKEND.git",
-    "accountId": "76c80029-d1ff-4d09-9992-bb68041d5fc9"
+}</component>
+  <component name="GithubPullRequestsUISettings">{
+  &quot;selectedUrlAndAccountId&quot;: {
+    &quot;url&quot;: &quot;https://github.com/BrunnoRosa/HELPDESK-BACKEND.git&quot;,
+    &quot;accountId&quot;: &quot;76c80029-d1ff-4d09-9992-bb68041d5fc9&quot;
   }
+}</component>
+  <component name="KubernetesApiPersistence"><![CDATA[{}]]></component>
+  <component name="KubernetesApiProvider"><![CDATA[{
+  "isMigrated": true
 }]]></component>
   <component name="McpProjectServerCommands">
     <commands />
@@ -68,7 +87,7 @@
     "SHARE_PROJECT_CONFIGURATION_FILES": "true",
     "Spring Boot.HelpDeskApplication.executor": "Run",
     "com.intellij.ml.llm.matterhorn.ej.ui.settings.DefaultModelSelectionForGA.v1": "true",
-    "git-widget-placeholder": "geo-backend",
+    "git-widget-placeholder": "#3 on geo-backend",
     "ignore.virus.scanning.warn.message": "true",
     "junie.onboarding.icon.badge.shown": "true",
     "kotlin-language-version-configured": "true",
@@ -78,8 +97,14 @@
     "node.js.selected.package.eslint": "(autodetect)",
     "node.js.selected.package.tslint": "(autodetect)",
     "nodejs_package_manager_path": "npm",
+    "settings.editor.selected.configurable": "preferences.editor",
     "to.speed.mode.migration.done": "true",
     "vue.rearranger.settings.migration": "true"
+  },
+  "keyToStringList": {
+    "DatabaseDriversLRU": [
+      "mysql"
+    ]
   }
 }]]></component>
   <component name="RunManager">
@@ -102,8 +127,8 @@
   <component name="SharedIndexes">
     <attachedChunks>
       <set>
-        <option value="bundled-jdk-30f59d01ecdd-2fc7cc6b9a17-intellij.indexing.shared.core-IU-253.33813.25" />
-        <option value="bundled-js-predefined-d6986cc7102b-9b0f141eb926-JavaScript-IU-253.33813.25" />
+        <option value="bundled-jdk-30f59d01ecdd-2fc7cc6b9a17-intellij.indexing.shared.core-IU-253.33813.55" />
+        <option value="bundled-js-predefined-d6986cc7102b-9b0f141eb926-JavaScript-IU-253.33813.55" />
       </set>
     </attachedChunks>
   </component>
@@ -115,7 +140,8 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1787354227944</updated>
-      <workItem from="1787391140820" duration="10564000" />
+      <workItem from="1787391140820" duration="11879000" />
+      <workItem from="1787456463913" duration="9456000" />
     </task>
     <servers />
   </component>

@@ -1,4 +1,4 @@
-package com.example.help_desk.dto;
+package com.example.help_desk.dto.funcionario;
 
 import com.example.help_desk.model.FuncionarioModel;
 import com.example.help_desk.model.enums.Funcionario;
@@ -19,7 +19,7 @@ public class FuncionarioResponseDTO {
         this.funcao = funcao;
         this.perfil = perfil;
     }
-
+    // Construtor definido atrelado direto do FuncionarioModel -> funcionario e chamado lá nas configurações do FuncionarioResponseDTO para trazer mais simplicidade ao Service
     public FuncionarioResponseDTO(FuncionarioModel funcionario) {
         this.nome = funcionario.getNome();
         this.email = funcionario.getEmail();

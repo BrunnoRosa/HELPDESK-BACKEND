@@ -1,9 +1,7 @@
-package com.example.help_desk.dto;
+package com.example.help_desk.dto.funcionario;
 
 import com.example.help_desk.model.enums.Funcionario;
 import com.example.help_desk.model.enums.Perfil;
-import jakarta.persistence.EnumType;
-import jakarta.persistence.Enumerated;
 import jakarta.validation.constraints.Email;
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.NotNull;

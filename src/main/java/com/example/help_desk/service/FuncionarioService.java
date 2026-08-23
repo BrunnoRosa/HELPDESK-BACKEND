@@ -1,7 +1,7 @@
 package com.example.help_desk.service;
 
-import com.example.help_desk.dto.FuncionarioResponseDTO;
-import com.example.help_desk.dto.FuncionarioRequestDTO;
+import com.example.help_desk.dto.funcionario.FuncionarioResponseDTO;
+import com.example.help_desk.dto.funcionario.FuncionarioRequestDTO;
 import com.example.help_desk.model.FuncionarioModel;
 import com.example.help_desk.repository.FuncionarioRepository;
 import org.springframework.beans.factory.annotation.Autowired;
