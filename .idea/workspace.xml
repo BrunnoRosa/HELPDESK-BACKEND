@@ -5,24 +5,11 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="ff651c6e-3cfa-49c4-863d-98bd77272376" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/example/help_desk/controller/ChamadoController.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/example/help_desk/dto/chamado/ChamadoRequestDTO.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/example/help_desk/dto/chamado/ChamadoResponseDTO.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/example/help_desk/model/ChamadoModel.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/example/help_desk/model/enums/Criticidade.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/example/help_desk/model/enums/Ocorrencia.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/example/help_desk/repository/ChamadoRepository.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/example/help_desk/service/ChamadoService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/dataSources.local.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dataSources.local.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/dataSources/00212714-b0db-4d0d-8f66-394d88f98acd.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dataSources/00212714-b0db-4d0d-8f66-394d88f98acd.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/help_desk/controller/FuncionarioController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/help_desk/controller/FuncionarioController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/help_desk/dto/FuncionarioRequestDTO.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/help_desk/dto/funcionario/FuncionarioRequestDTO.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/help_desk/dto/FuncionarioResponseDTO.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/help_desk/dto/funcionario/FuncionarioResponseDTO.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/help_desk/model/FuncionarioModel.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/help_desk/model/FuncionarioModel.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/help_desk/service/FuncionarioService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/help_desk/service/FuncionarioService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/example/help_desk/controller/FuncionarioController.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/example/help_desk/controller/FuncionarioController.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/example/help_desk/dto/FuncionarioRequestDTO.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/example/help_desk/dto/FuncionarioResponseDTO.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/example/help_desk/service/FuncionarioService.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/example/help_desk/service/FuncionarioService.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/help_desk/service/ChamadoService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/help_desk/service/ChamadoService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/example/help_desk/service/ChamadoService.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/example/help_desk/service/ChamadoService.class" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -141,7 +128,7 @@
       <option name="presentableId" value="Default" />
       <updated>1787354227944</updated>
       <workItem from="1787391140820" duration="11879000" />
-      <workItem from="1787456463913" duration="9456000" />
+      <workItem from="1787456463913" duration="13202000" />
     </task>
     <servers />
   </component>

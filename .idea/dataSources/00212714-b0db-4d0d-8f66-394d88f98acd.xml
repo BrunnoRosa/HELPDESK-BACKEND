@@ -1066,7 +1066,7 @@ sys|schema||mysql.sys|localhost|TRIGGER|G</Grants>
       <AutoIntrospectionLevel>3</AutoIntrospectionLevel>
       <Current>1</Current>
       <LastIntrospectionLevel>3</LastIntrospectionLevel>
-      <LastIntrospectionLocalTimestamp>2026-08-23.20:41:20</LastIntrospectionLocalTimestamp>
+      <LastIntrospectionLocalTimestamp>2026-08-23.21:25:04</LastIntrospectionLocalTimestamp>
       <CollationName>utf8mb4_0900_ai_ci</CollationName>
     </schema>
     <schema id="289" parent="1" name="information_schema">
@@ -1112,132 +1112,116 @@ sys|schema||mysql.sys|localhost|TRIGGER|G</Grants>
       <Engine>InnoDB</Engine>
       <CollationName>utf8mb4_0900_ai_ci</CollationName>
     </table>
-    <check id="301" parent="298" name="tab_chamados_chk_1">
-      <NameSurrogate>1</NameSurrogate>
-      <Predicate>`ocorrencia_chamado` between 0 and 5</Predicate>
-    </check>
-    <check id="302" parent="298" name="tab_chamados_chk_2">
-      <NameSurrogate>1</NameSurrogate>
-      <Predicate>`prioridade_chamado` between 0 and 3</Predicate>
-    </check>
-    <column id="303" parent="298" name="id">
-      <AutoIncrement>2</AutoIncrement>
-      <NotNull>1</NotNull>
-      <Position>1</Position>
-      <StoredType>bigint|0s</StoredType>
-    </column>
-    <column id="304" parent="298" name="descricao_chamado">
-      <NotNull>1</NotNull>
-      <Position>2</Position>
-      <StoredType>varchar(255)|0s</StoredType>
-    </column>
-    <column id="305" parent="298" name="ocorrencia_chamado">
-      <NotNull>1</NotNull>
-      <Position>3</Position>
-      <StoredType>tinyint|0s</StoredType>
-    </column>
-    <column id="306" parent="298" name="prioridade_chamado">
-      <NotNull>1</NotNull>
-      <Position>4</Position>
-      <StoredType>tinyint|0s</StoredType>
-    </column>
-    <column id="307" parent="298" name="titulo_chamado">
-      <NotNull>1</NotNull>
-      <Position>5</Position>
-      <StoredType>varchar(255)|0s</StoredType>
-    </column>
-    <index id="308" parent="298" name="PRIMARY">
-      <ColNames>id</ColNames>
-      <Type>btree</Type>
-      <Unique>1</Unique>
-    </index>
-    <key id="309" parent="298" name="PRIMARY">
-      <NameSurrogate>1</NameSurrogate>
-      <Primary>1</Primary>
-      <UnderlyingIndexName>PRIMARY</UnderlyingIndexName>
-    </key>
-    <check id="310" parent="299" name="tab_clientes_chk_1">
-      <NameSurrogate>1</NameSurrogate>
-      <Predicate>`setor` between 0 and 2</Predicate>
-    </check>
-    <column id="311" parent="299" name="id">
-      <AutoIncrement>1</AutoIncrement>
-      <NotNull>1</NotNull>
-      <Position>1</Position>
-      <StoredType>bigint|0s</StoredType>
-    </column>
-    <column id="312" parent="299" name="email">
-      <Position>2</Position>
-      <StoredType>varchar(255)|0s</StoredType>
-    </column>
-    <column id="313" parent="299" name="nome">
-      <Position>3</Position>
-      <StoredType>varchar(255)|0s</StoredType>
-    </column>
-    <column id="314" parent="299" name="setor">
-      <Position>4</Position>
-      <StoredType>tinyint|0s</StoredType>
-    </column>
-    <index id="315" parent="299" name="PRIMARY">
-      <ColNames>id</ColNames>
-      <Type>btree</Type>
-      <Unique>1</Unique>
-    </index>
-    <key id="316" parent="299" name="PRIMARY">
-      <NameSurrogate>1</NameSurrogate>
-      <Primary>1</Primary>
-      <UnderlyingIndexName>PRIMARY</UnderlyingIndexName>
-    </key>
-    <check id="317" parent="300" name="tab_funcionarios_chk_1">
-      <NameSurrogate>1</NameSurrogate>
-      <Predicate>`funcao` between 0 and 2</Predicate>
-    </check>
-    <check id="318" parent="300" name="tab_funcionarios_chk_2">
-      <NameSurrogate>1</NameSurrogate>
-      <Predicate>`perfil` between 0 and 1</Predicate>
-    </check>
-    <column id="319" parent="300" name="id">
+    <column id="301" parent="298" name="id">
       <AutoIncrement>4</AutoIncrement>
       <NotNull>1</NotNull>
       <Position>1</Position>
       <StoredType>bigint|0s</StoredType>
     </column>
-    <column id="320" parent="300" name="email">
+    <column id="302" parent="298" name="descricao_chamado">
       <NotNull>1</NotNull>
       <Position>2</Position>
       <StoredType>varchar(255)|0s</StoredType>
     </column>
-    <column id="321" parent="300" name="funcao">
+    <column id="303" parent="298" name="ocorrencia_chamado">
       <NotNull>1</NotNull>
       <Position>3</Position>
-      <StoredType>tinyint|0s</StoredType>
+      <StoredType>enum(&apos;CLIMATIZACAO&apos;, &apos;ELETRICA&apos;, &apos;IMPRESSORA&apos;, &apos;INFORMATICA&apos;, &apos;MOBILIA&apos;, &apos;SISTEMAINCENDIO&apos;)|0e</StoredType>
     </column>
-    <column id="322" parent="300" name="nome">
+    <column id="304" parent="298" name="prioridade_chamado">
       <NotNull>1</NotNull>
       <Position>4</Position>
-      <StoredType>varchar(255)|0s</StoredType>
+      <StoredType>enum(&apos;ALTA&apos;, &apos;BAIXA&apos;, &apos;MEDIA&apos;, &apos;URGENTE&apos;)|0e</StoredType>
     </column>
-    <column id="323" parent="300" name="perfil">
+    <column id="305" parent="298" name="titulo_chamado">
       <NotNull>1</NotNull>
       <Position>5</Position>
-      <StoredType>tinyint|0s</StoredType>
+      <StoredType>varchar(255)|0s</StoredType>
     </column>
-    <index id="324" parent="300" name="PRIMARY">
+    <index id="306" parent="298" name="PRIMARY">
       <ColNames>id</ColNames>
       <Type>btree</Type>
       <Unique>1</Unique>
     </index>
-    <index id="325" parent="300" name="UKj66lc8en299dqf81pedcsuwf5">
-      <ColNames>email</ColNames>
-      <Type>btree</Type>
-      <Unique>1</Unique>
-    </index>
-    <key id="326" parent="300" name="PRIMARY">
+    <key id="307" parent="298" name="PRIMARY">
       <NameSurrogate>1</NameSurrogate>
       <Primary>1</Primary>
       <UnderlyingIndexName>PRIMARY</UnderlyingIndexName>
     </key>
-    <key id="327" parent="300" name="UKj66lc8en299dqf81pedcsuwf5">
+    <check id="308" parent="299" name="tab_clientes_chk_1">
+      <NameSurrogate>1</NameSurrogate>
+      <Predicate>`setor` between 0 and 2</Predicate>
+    </check>
+    <column id="309" parent="299" name="id">
+      <AutoIncrement>1</AutoIncrement>
+      <NotNull>1</NotNull>
+      <Position>1</Position>
+      <StoredType>bigint|0s</StoredType>
+    </column>
+    <column id="310" parent="299" name="email">
+      <Position>2</Position>
+      <StoredType>varchar(255)|0s</StoredType>
+    </column>
+    <column id="311" parent="299" name="nome">
+      <Position>3</Position>
+      <StoredType>varchar(255)|0s</StoredType>
+    </column>
+    <column id="312" parent="299" name="setor">
+      <Position>4</Position>
+      <StoredType>tinyint|0s</StoredType>
+    </column>
+    <index id="313" parent="299" name="PRIMARY">
+      <ColNames>id</ColNames>
+      <Type>btree</Type>
+      <Unique>1</Unique>
+    </index>
+    <key id="314" parent="299" name="PRIMARY">
+      <NameSurrogate>1</NameSurrogate>
+      <Primary>1</Primary>
+      <UnderlyingIndexName>PRIMARY</UnderlyingIndexName>
+    </key>
+    <column id="315" parent="300" name="id">
+      <AutoIncrement>1</AutoIncrement>
+      <NotNull>1</NotNull>
+      <Position>1</Position>
+      <StoredType>bigint|0s</StoredType>
+    </column>
+    <column id="316" parent="300" name="email">
+      <NotNull>1</NotNull>
+      <Position>2</Position>
+      <StoredType>varchar(255)|0s</StoredType>
+    </column>
+    <column id="317" parent="300" name="funcao">
+      <NotNull>1</NotNull>
+      <Position>3</Position>
+      <StoredType>enum(&apos;JUNIOR&apos;, &apos;PLENO&apos;, &apos;SENIOR&apos;)|0e</StoredType>
+    </column>
+    <column id="318" parent="300" name="nome">
+      <NotNull>1</NotNull>
+      <Position>4</Position>
+      <StoredType>varchar(255)|0s</StoredType>
+    </column>
+    <column id="319" parent="300" name="perfil">
+      <NotNull>1</NotNull>
+      <Position>5</Position>
+      <StoredType>enum(&apos;TECNICO&apos;, &apos;USUARIO&apos;)|0e</StoredType>
+    </column>
+    <index id="320" parent="300" name="PRIMARY">
+      <ColNames>id</ColNames>
+      <Type>btree</Type>
+      <Unique>1</Unique>
+    </index>
+    <index id="321" parent="300" name="UKj66lc8en299dqf81pedcsuwf5">
+      <ColNames>email</ColNames>
+      <Type>btree</Type>
+      <Unique>1</Unique>
+    </index>
+    <key id="322" parent="300" name="PRIMARY">
+      <NameSurrogate>1</NameSurrogate>
+      <Primary>1</Primary>
+      <UnderlyingIndexName>PRIMARY</UnderlyingIndexName>
+    </key>
+    <key id="323" parent="300" name="UKj66lc8en299dqf81pedcsuwf5">
       <UnderlyingIndexName>UKj66lc8en299dqf81pedcsuwf5</UnderlyingIndexName>
     </key>
   </database-model>

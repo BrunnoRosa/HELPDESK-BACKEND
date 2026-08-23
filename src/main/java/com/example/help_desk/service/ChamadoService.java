@@ -8,6 +8,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
 
+import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
 import java.util.List;
 
 @Service
@@ -38,9 +40,18 @@ public class ChamadoService {
     public ChamadoModel atualizar(Long id, ChamadoRequestDTO atualizarDTO){
         ChamadoModel novoRegistro = chamadoRepository.findById(id).orElseThrow(() -> new IllegalArgumentException("Chamado não localizado ❌"));
 
+        String dataHora = LocalDateTime.now().format(DateTimeFormatter.ofPattern("dd/MM/yyyy HH:mm"));
+
+        // Recupera a descrição existente (tratando caso esteja nula)
+        String descricaoAtual = novoRegistro.getDescricaoChamado() != null ? novoRegistro.getDescricaoChamado() : "";
+
+        // Concatena com quebra de linha (\n) e um marcador para formar o histórico
+        String novaAtualizacao = "[" + dataHora + "] " + atualizarDTO.getDescricaoChamado();
+
+
         novoRegistro.setTituloChamado(atualizarDTO.getTituloChamado());
         novoRegistro.setOcorrenciaChamado(atualizarDTO.getOcorrenciaChamado());
-        novoRegistro.setDescricaoChamado(atualizarDTO.getDescricaoChamado());
+        novoRegistro.setDescricaoChamado(descricaoAtual + "\n" + novaAtualizacao);
         novoRegistro.setPrioridadeChamado(atualizarDTO.getPrioridadeChamado());
 
         return chamadoRepository.save(novoRegistro);
