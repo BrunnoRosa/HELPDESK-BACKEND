@@ -2,8 +2,11 @@ package com.example.help_desk.dto;
 
 import com.example.help_desk.model.enums.Funcionario;
 import com.example.help_desk.model.enums.Perfil;
+import jakarta.persistence.EnumType;
+import jakarta.persistence.Enumerated;
 import jakarta.validation.constraints.Email;
 import jakarta.validation.constraints.NotBlank;
+import jakarta.validation.constraints.NotNull;
 import jakarta.validation.constraints.Size;
 
 public class FuncionarioRequestDTO {
@@ -16,12 +19,12 @@ public class FuncionarioRequestDTO {
     @Email(message = "Informe um email válido")
     private String email;
 
-    @NotBlank(message = "Função Obrigatória ❌")
-    @Size(min=5, message = "Informe sua Função ❌")
+    @NotNull(message = "Função Obrigatória ❌")
+    //@Enumerated(EnumType.STRING)
     private Funcionario funcao;
 
-    @NotBlank(message = "Setor Obrigatório ❌")
-    @Size(min=2, message = "Informe o Setor ❌")
+    @NotNull(message = "Setor Obrigatório ❌")
+//    @Enumerated(EnumType.STRING)
     private Perfil perfil;
 
     public FuncionarioRequestDTO(String nome, String email, Funcionario funcao, Perfil perfil) {
@@ -34,35 +37,35 @@ public class FuncionarioRequestDTO {
     public FuncionarioRequestDTO() {
     }
 
-    public @NotBlank(message = "Nome Obrigatório ❌") @Size(min = 8, message = "Informe Nome e Sobrenome ❌") String getNome() {
+    public String getNome() {
         return nome;
     }
 
-    public void setNome(@NotBlank(message = "Nome Obrigatório ❌") @Size(min = 8, message = "Informe Nome e Sobrenome ❌") String nome) {
+    public void setNome(String nome) {
         this.nome = nome;
     }
 
-    public @NotBlank(message = "Email Obrigatório ❌") @Email(message = "Informe um email válido") String getEmail() {
+    public String getEmail() {
         return email;
     }
 
-    public void setEmail(@NotBlank(message = "Email Obrigatório ❌") @Email(message = "Informe um email válido") String email) {
+    public void setEmail(String email) {
         this.email = email;
     }
 
-    public @NotBlank(message = "Função Obrigatória ❌") @Size(min = 5, message = "Informe sua Função ❌") Funcionario getFuncao() {
+    public Funcionario getFuncao() {
         return funcao;
     }
 
-    public void setFuncao(@NotBlank(message = "Função Obrigatória ❌") @Size(min = 5, message = "Informe sua Função ❌") Funcionario funcao) {
+    public void setFuncao(Funcionario funcao) {
         this.funcao = funcao;
     }
 
-    public @NotBlank(message = "Setor Obrigatório ❌") @Size(min = 2, message = "Informe o Setor ❌") Perfil getPerfil() {
+    public Perfil getPerfil() {
         return perfil;
     }
 
-    public void setPerfil(@NotBlank(message = "Setor Obrigatório ❌") @Size(min = 2, message = "Informe o Setor ❌") Perfil perfil) {
+    public void setPerfil(Perfil perfil) {
         this.perfil = perfil;
     }
 }
