@@ -1,47 +1,30 @@
-package com.example.help_desk.model;
+package com.example.help_desk.dto.funcionario;
 
+import com.example.help_desk.model.FuncionarioModel;
 import com.example.help_desk.model.enums.Funcionario;
 import com.example.help_desk.model.enums.Perfil;
-import jakarta.persistence.*;
 
-@Entity
-@Table(name = "tab_funcionarios")
-public class FuncionarioModel {
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-
-    private Long id;
-    @Column(nullable = false)
+public class FuncionarioResponseDTO {
     private String nome;
-
-    @Column(nullable = false, unique = true)
     private String email;
-
-    @Enumerated(EnumType.STRING)
-    @Column(nullable = false)
     private Funcionario funcao;
-
-    @Enumerated(EnumType.STRING)
-    @Column(nullable = false)
     private Perfil perfil;
 
-    public FuncionarioModel(Long id, String nome, String email, Funcionario funcao, Perfil perfil) {
-        this.id = id;
+    public FuncionarioResponseDTO() {
+    }
+
+    public FuncionarioResponseDTO(String nome, String email, Funcionario funcao, Perfil perfil) {
         this.nome = nome;
         this.email = email;
         this.funcao = funcao;
         this.perfil = perfil;
     }
-
-    public FuncionarioModel() {
-    }
-
-    public Long getId() {
-        return id;
-    }
-
-    public void setId(Long id) {
-        this.id = id;
+    // Construtor definido atrelado direto do FuncionarioModel -> funcionario e chamado lá nas configurações do FuncionarioResponseDTO para trazer mais simplicidade ao Service
+    public FuncionarioResponseDTO(FuncionarioModel funcionario) {
+        this.nome = funcionario.getNome();
+        this.email = funcionario.getEmail();
+        this.funcao = funcionario.getFuncao();
+        this.perfil = funcionario.getPerfil();
     }
 
     public String getNome() {
@@ -76,4 +59,3 @@ public class FuncionarioModel {
         this.perfil = perfil;
     }
 }
-

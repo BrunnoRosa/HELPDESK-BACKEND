@@ -1,47 +1,38 @@
-package com.example.help_desk.model;
+package com.example.help_desk.dto.funcionario;
 
 import com.example.help_desk.model.enums.Funcionario;
 import com.example.help_desk.model.enums.Perfil;
-import jakarta.persistence.*;
+import jakarta.validation.constraints.Email;
+import jakarta.validation.constraints.NotBlank;
+import jakarta.validation.constraints.NotNull;
+import jakarta.validation.constraints.Size;
 
-@Entity
-@Table(name = "tab_funcionarios")
-public class FuncionarioModel {
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
+public class FuncionarioRequestDTO {
 
-    private Long id;
-    @Column(nullable = false)
+    @NotBlank(message = "Nome Obrigatório ❌")
+    @Size(min=8, message = "Informe Nome e Sobrenome ❌")
     private String nome;
 
-    @Column(nullable = false, unique = true)
+    @NotBlank(message = "Email Obrigatório ❌")
+    @Email(message = "Informe um email válido")
     private String email;
 
-    @Enumerated(EnumType.STRING)
-    @Column(nullable = false)
+    @NotNull(message = "Função Obrigatória ❌")
+    //@Enumerated(EnumType.STRING)
     private Funcionario funcao;
 
-    @Enumerated(EnumType.STRING)
-    @Column(nullable = false)
+    @NotNull(message = "Setor Obrigatório ❌")
+//    @Enumerated(EnumType.STRING)
     private Perfil perfil;
 
-    public FuncionarioModel(Long id, String nome, String email, Funcionario funcao, Perfil perfil) {
-        this.id = id;
+    public FuncionarioRequestDTO(String nome, String email, Funcionario funcao, Perfil perfil) {
         this.nome = nome;
         this.email = email;
         this.funcao = funcao;
         this.perfil = perfil;
     }
 
-    public FuncionarioModel() {
-    }
-
-    public Long getId() {
-        return id;
-    }
-
-    public void setId(Long id) {
-        this.id = id;
+    public FuncionarioRequestDTO() {
     }
 
     public String getNome() {
@@ -76,4 +67,3 @@ public class FuncionarioModel {
         this.perfil = perfil;
     }
 }
-
