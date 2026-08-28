@@ -4,7 +4,27 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="ff651c6e-3cfa-49c4-863d-98bd77272376" name="Changes" comment="" />
+    <list default="true" id="ff651c6e-3cfa-49c4-863d-98bd77272376" name="Changes" comment="">
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/example/help_desk/repository/AtendimentoRepository.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/help_desk/controller/ClienteController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/help_desk/controller/AtendimentoController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/help_desk/controller/FuncionarioController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/help_desk/controller/FuncionarioController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/help_desk/dto/ClienteRequestDTO.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/help_desk/dto/atendimento/AtendimentoRequestDTO.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/help_desk/dto/ClienteResponseDTO.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/help_desk/dto/atendimento/AtendimentoResponseDTO.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/help_desk/dto/chamado/ChamadoRequestDTO.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/help_desk/dto/chamado/ChamadoRequestDTO.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/help_desk/dto/chamado/ChamadoResponseDTO.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/help_desk/dto/chamado/ChamadoResponseDTO.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/help_desk/dto/funcionario/FuncionarioRequestDTO.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/help_desk/dto/funcionario/FuncionarioResponseDTO.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/help_desk/model/ClienteModel.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/help_desk/model/AtendimentoModel.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/help_desk/model/FuncionarioModel.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/help_desk/model/enums/Perfil.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/help_desk/model/enums/Setor.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/help_desk/repository/ClienteRepository.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/help_desk/repository/FuncionarioRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/help_desk/repository/FuncionarioRepository.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/help_desk/service/ChamadoService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/help_desk/service/ChamadoService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/help_desk/service/ClienteService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/help_desk/service/AtendimentoService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/help_desk/service/FuncionarioService.java" beforeDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -68,7 +88,7 @@
     "SHARE_PROJECT_CONFIGURATION_FILES": "true",
     "Spring Boot.HelpDeskApplication.executor": "Run",
     "com.intellij.ml.llm.matterhorn.ej.ui.settings.DefaultModelSelectionForGA.v1": "true",
-    "git-widget-placeholder": "geo-backend",
+    "git-widget-placeholder": "main",
     "ignore.virus.scanning.warn.message": "true",
     "junie.onboarding.icon.badge.shown": "true",
     "kotlin-language-version-configured": "true",

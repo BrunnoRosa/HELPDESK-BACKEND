@@ -5,6 +5,7 @@ import com.example.help_desk.model.enums.Criticidade;
 import com.example.help_desk.model.enums.Ocorrencia;
 
 public class ChamadoResponseDTO {
+
     private Long id;
     private String tituloChamado;
     private Ocorrencia ocorrenciaChamado;
@@ -22,14 +23,12 @@ public class ChamadoResponseDTO {
         this.prioridadeChamado = prioridadeChamado;
     }
 
-    // Construtor definido atrelado direto do FuncionarioModel -> funcionario e chamado lá nas configurações do FuncionarioResponseDTO para trazer mais simplicidade ao Service
     public ChamadoResponseDTO(ChamadoModel chamado) {
         this.id = chamado.getId();
         this.tituloChamado = chamado.getTituloChamado();
         this.ocorrenciaChamado = chamado.getOcorrenciaChamado();
         this.descricaoChamado = chamado.getDescricaoChamado();
         this.prioridadeChamado = chamado.getPrioridadeChamado();
-
     }
 
     public Long getId() {
