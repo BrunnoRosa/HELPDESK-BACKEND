@@ -8,8 +8,8 @@ public enum Ocorrencia {
     ELETRICA ("Iluminação / Tomadas / Interruptores"),
     CLIMATIZACAO ("Ar-Condicionado / Exaustor / Ventilador");
 
-    private String descricao;
-    private Ocorrencia(String descricao) {
+    private final String descricao;
+    Ocorrencia(String descricao) {
         this.descricao = descricao;
     }
     public String getDescricao() {
