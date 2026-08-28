@@ -3,10 +3,14 @@ package com.example.help_desk.service;
 import com.example.help_desk.dto.chamado.ChamadoRequestDTO;
 import com.example.help_desk.dto.chamado.ChamadoResponseDTO;
 import com.example.help_desk.model.ChamadoModel;
+import com.example.help_desk.model.UsuarioModel;
+import com.example.help_desk.model.enums.PerfilUsuario;
+import com.example.help_desk.repository.AtendimentoRepository;
 import com.example.help_desk.repository.ChamadoRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
@@ -21,33 +25,57 @@ public class ChamadoService {
     @Autowired
     private ChamadoRepository chamadoRepository;
 
-    // Construtor definido no ChamadoResponseDTO para trazer mais simplicidade ao Service
-    public List<ChamadoResponseDTO> listar(){
+    @Autowired
+    private AtendimentoRepository atendimentoRepository;
+
+    @Autowired
+    private AcessoService acessoService;
+
+    @Transactional(readOnly = true)
+    public List<ChamadoResponseDTO> listar(UsuarioModel usuario) {
+        if (usuario.getPerfil() == PerfilUsuario.USUARIO) {
+            return atendimentoRepository.findAllBySolicitanteId(usuario.getId())
+                    .stream()
+                    .map(atendimento -> new ChamadoResponseDTO(atendimento.getChamado()))
+                    .toList();
+        }
+
         return chamadoRepository.findAll().stream().map(ChamadoResponseDTO::new).toList();
     }
 
-    public ChamadoModel salvar(ChamadoRequestDTO salvarDTO){
+    @Transactional(readOnly = true)
+    public ChamadoResponseDTO buscarPorId(Long id, UsuarioModel usuario) {
 
+        acessoService.validarAcessoChamado(usuario, id);
+
+        ChamadoModel chamado = chamadoRepository.findById(id)
+                .orElseThrow(() ->
+                        new IllegalArgumentException(
+                                "Chamado não localizado ❌"
+                        )
+                );
+
+        return new ChamadoResponseDTO(chamado);
+    }
+
+    @Transactional
+    public ChamadoModel salvar(ChamadoRequestDTO salvarDTO) {
         ChamadoModel novoChamado = new ChamadoModel();
         novoChamado.setTituloChamado(salvarDTO.getTituloChamado());
         novoChamado.setOcorrenciaChamado(salvarDTO.getOcorrenciaChamado());
         novoChamado.setDescricaoChamado(salvarDTO.getDescricaoChamado());
         novoChamado.setPrioridadeChamado(salvarDTO.getPrioridadeChamado());
-
         return chamadoRepository.save(novoChamado);
     }
 
-    public ChamadoModel atualizar(Long id, ChamadoRequestDTO atualizarDTO){
-        ChamadoModel novoRegistro = chamadoRepository.findById(id).orElseThrow(() -> new IllegalArgumentException("Chamado não localizado ❌"));
+    @Transactional
+    public ChamadoModel atualizar(Long id, ChamadoRequestDTO atualizarDTO) {
+        ChamadoModel novoRegistro = chamadoRepository.findById(id)
+                .orElseThrow(() -> new IllegalArgumentException("Chamado não localizado ❌"));
 
         String dataHora = LocalDateTime.now().format(DateTimeFormatter.ofPattern("dd/MM/yyyy HH:mm"));
-
-        // Recupera a descrição existente (tratando caso esteja nula)
         String descricaoAtual = novoRegistro.getDescricaoChamado() != null ? novoRegistro.getDescricaoChamado() : "";
-
-        // Concatena com quebra de linha (\n) e um marcador para formar o histórico
         String novaAtualizacao = "[" + dataHora + "] " + atualizarDTO.getDescricaoChamado();
-
 
         novoRegistro.setTituloChamado(atualizarDTO.getTituloChamado());
         novoRegistro.setOcorrenciaChamado(atualizarDTO.getOcorrenciaChamado());
@@ -57,11 +85,12 @@ public class ChamadoService {
         return chamadoRepository.save(novoRegistro);
     }
 
-    public void deletar(Long id){
-        if(!chamadoRepository.existsById(id)){
-            throw new RuntimeException("Chamado não localizado. ❌");
+    @Transactional
+    public void deletar(Long id) {
+        if (!chamadoRepository.existsById(id)) {
+            throw new RuntimeException("Chamado não localizado ❌");
         }
+        atendimentoRepository.deleteByChamadoId(id);
         chamadoRepository.deleteById(id);
     }
-
 }
