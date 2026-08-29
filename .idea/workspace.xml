@@ -4,13 +4,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="ff651c6e-3cfa-49c4-863d-98bd77272376" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/dataSources.local.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dataSources.local.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/dataSources/00212714-b0db-4d0d-8f66-394d88f98acd.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dataSources/00212714-b0db-4d0d-8f66-394d88f98acd.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/help_desk/service/ChamadoService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/help_desk/service/ChamadoService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/example/help_desk/service/ChamadoService.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/example/help_desk/service/ChamadoService.class" afterDir="false" />
-    </list>
+    <list default="true" id="ff651c6e-3cfa-49c4-863d-98bd77272376" name="Changes" comment="" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -40,10 +34,10 @@
     &quot;accountId&quot;: &quot;76c80029-d1ff-4d09-9992-bb68041d5fc9&quot;
   }
 }</component>
-  <component name="KubernetesApiPersistence"><![CDATA[{}]]></component>
-  <component name="KubernetesApiProvider"><![CDATA[{
-  "isMigrated": true
-}]]></component>
+  <component name="KubernetesApiPersistence">{}</component>
+  <component name="KubernetesApiProvider">{
+  &quot;isMigrated&quot;: true
+}</component>
   <component name="McpProjectServerCommands">
     <commands />
     <urls />
@@ -74,7 +68,7 @@
     "SHARE_PROJECT_CONFIGURATION_FILES": "true",
     "Spring Boot.HelpDeskApplication.executor": "Run",
     "com.intellij.ml.llm.matterhorn.ej.ui.settings.DefaultModelSelectionForGA.v1": "true",
-    "git-widget-placeholder": "#3 on geo-backend",
+    "git-widget-placeholder": "main",
     "ignore.virus.scanning.warn.message": "true",
     "junie.onboarding.icon.badge.shown": "true",
     "kotlin-language-version-configured": "true",
