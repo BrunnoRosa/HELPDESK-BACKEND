@@ -1,73 +1,52 @@
-package com.example.help_desk.dto.chamado;
+package com.example.help_desk.exception;
 
-import com.example.help_desk.model.ChamadoModel;
-import com.example.help_desk.model.enums.Criticidade;
-import com.example.help_desk.model.enums.Ocorrencia;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
+import org.springframework.security.access.AccessDeniedException;
+import org.springframework.security.authentication.BadCredentialsException;
+import org.springframework.web.bind.MethodArgumentNotValidException;
+import org.springframework.web.bind.annotation.ExceptionHandler;
+import org.springframework.web.bind.annotation.RestControllerAdvice;
 
-public class ChamadoResponseDTO {
+import java.util.LinkedHashMap;
+import java.util.Map;
 
-    private Long id;
-    private String tituloChamado;
-    private Ocorrencia ocorrenciaChamado;
-    private String descricaoChamado;
-    private Criticidade prioridadeChamado;
+@RestControllerAdvice
+public class GlobalExceptionHandler {
 
-    public ChamadoResponseDTO() {
+    @ExceptionHandler(MethodArgumentNotValidException.class)
+    public ResponseEntity<Map<String, Object>> handleValidation(MethodArgumentNotValidException exception) {
+        Map<String, String> erros = new LinkedHashMap<>();
+        exception.getBindingResult().getFieldErrors().forEach(error ->
+                erros.put(error.getField(), error.getDefaultMessage())
+        );
+        return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(Map.of(
+                "Mensagem", "Dados inválidos",
+                "erros", erros
+        ));
     }
 
-    public ChamadoResponseDTO(Long id, String tituloChamado, Ocorrencia ocorrenciaChamado, String descricaoChamado, Criticidade prioridadeChamado) {
-        this.id = id;
-        this.tituloChamado = tituloChamado;
-        this.ocorrenciaChamado = ocorrenciaChamado;
-        this.descricaoChamado = descricaoChamado;
-        this.prioridadeChamado = prioridadeChamado;
+    @ExceptionHandler(BadCredentialsException.class)
+    public ResponseEntity<Map<String, Object>> handleBadCredentials() {
+        return ResponseEntity.status(HttpStatus.UNAUTHORIZED)
+                .body(Map.of("Mensagem", "E-mail ou senha inválidos ❌"));
     }
 
-    public ChamadoResponseDTO(ChamadoModel chamado) {
-        this.id = chamado.getId();
-        this.tituloChamado = chamado.getTituloChamado();
-        this.ocorrenciaChamado = chamado.getOcorrenciaChamado();
-        this.descricaoChamado = chamado.getDescricaoChamado();
-        this.prioridadeChamado = chamado.getPrioridadeChamado();
+    @ExceptionHandler(AccessDeniedException.class)
+    public ResponseEntity<Map<String, Object>> handleAccessDenied(AccessDeniedException exception) {
+        return ResponseEntity.status(HttpStatus.FORBIDDEN)
+                .body(Map.of("Mensagem", exception.getMessage()));
     }
 
-    public Long getId() {
-        return id;
+    @ExceptionHandler(IllegalArgumentException.class)
+    public ResponseEntity<Map<String, Object>> handleIllegalArgument(IllegalArgumentException exception) {
+        return ResponseEntity.status(HttpStatus.BAD_REQUEST)
+                .body(Map.of("Mensagem", exception.getMessage()));
     }
 
-    public void setId(Long id) {
-        this.id = id;
-    }
-
-    public String getTituloChamado() {
-        return tituloChamado;
-    }
-
-    public void setTituloChamado(String tituloChamado) {
-        this.tituloChamado = tituloChamado;
-    }
-
-    public Ocorrencia getOcorrenciaChamado() {
-        return ocorrenciaChamado;
-    }
-
-    public void setOcorrenciaChamado(Ocorrencia ocorrenciaChamado) {
-        this.ocorrenciaChamado = ocorrenciaChamado;
-    }
-
-    public String getDescricaoChamado() {
-        return descricaoChamado;
-    }
-
-    public void setDescricaoChamado(String descricaoChamado) {
-        this.descricaoChamado = descricaoChamado;
-    }
-
-    public Criticidade getPrioridadeChamado() {
-        return prioridadeChamado;
-    }
-
-    public void setPrioridadeChamado(Criticidade prioridadeChamado) {
-        this.prioridadeChamado = prioridadeChamado;
+    @ExceptionHandler(RuntimeException.class)
+    public ResponseEntity<Map<String, Object>> handleRuntime(RuntimeException exception) {
+        return ResponseEntity.status(HttpStatus.NOT_FOUND)
+                .body(Map.of("Mensagem", exception.getMessage()));
     }
 }
