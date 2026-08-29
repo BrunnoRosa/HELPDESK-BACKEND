@@ -40,35 +40,35 @@ public class ChamadoRequestDTO {
         this.id = id;
     }
 
-    public String getTituloChamado() {
+    public @NotBlank(message = "Título de Obrigatório ❌") String getTituloChamado() {
         return tituloChamado;
     }
 
-    public void setTituloChamado(String tituloChamado) {
+    public void setTituloChamado(@NotBlank(message = "Título de Obrigatório ❌") String tituloChamado) {
         this.tituloChamado = tituloChamado;
     }
 
-    public Ocorrencia getOcorrenciaChamado() {
+    public @NotNull(message = "Defina uma Opção 🔎") Ocorrencia getOcorrenciaChamado() {
         return ocorrenciaChamado;
     }
 
-    public void setOcorrenciaChamado(Ocorrencia ocorrenciaChamado) {
+    public void setOcorrenciaChamado(@NotNull(message = "Defina uma Opção 🔎") Ocorrencia ocorrenciaChamado) {
         this.ocorrenciaChamado = ocorrenciaChamado;
     }
 
-    public String getDescricaoChamado() {
+    public @NotBlank(message = "Descreva a Falha 📝") String getDescricaoChamado() {
         return descricaoChamado;
     }
 
-    public void setDescricaoChamado(String descricaoChamado) {
+    public void setDescricaoChamado(@NotBlank(message = "Descreva a Falha 📝") String descricaoChamado) {
         this.descricaoChamado = descricaoChamado;
     }
 
-    public Criticidade getPrioridadeChamado() {
+    public @NotNull(message = "Escolha a Prioridade 🔎") Criticidade getPrioridadeChamado() {
         return prioridadeChamado;
     }
 
-    public void setPrioridadeChamado(Criticidade prioridadeChamado) {
+    public void setPrioridadeChamado(@NotNull(message = "Escolha a Prioridade 🔎") Criticidade prioridadeChamado) {
         this.prioridadeChamado = prioridadeChamado;
     }
 }
