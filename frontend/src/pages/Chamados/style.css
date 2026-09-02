@@ -1,0 +1,30 @@
+.chamados__filters {
+  display: grid;
+  grid-template-columns: 1fr 240px;
+  gap: 12px;
+  margin-bottom: 20px;
+}
+
+.chamados__filters input,
+.chamados__filters select {
+  width: 100%;
+  border: 1px solid #d0d5dd;
+  border-radius: 10px;
+  background: #fff;
+  padding: 11px 12px;
+}
+
+.chamados__grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 16px;
+}
+
+@media (max-width: 900px) {
+  .chamados__grid { grid-template-columns: repeat(2, 1fr); }
+}
+
+@media (max-width: 650px) {
+  .chamados__filters,
+  .chamados__grid { grid-template-columns: 1fr; }
+}

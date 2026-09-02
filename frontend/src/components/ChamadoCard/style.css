@@ -1,0 +1,57 @@
+.chamado-card {
+  background: #fff;
+  border: 1px solid #e4e7ec;
+  border-radius: 14px;
+  padding: 18px;
+  box-shadow: 0 4px 16px rgba(16, 24, 40, 0.05);
+}
+
+.chamado-card__top,
+.chamado-card__meta {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.chamado-card__top {
+  justify-content: space-between;
+}
+
+.chamado-card__id {
+  color: #667085;
+  font-size: 13px;
+  font-weight: 700;
+}
+
+.chamado-card h3 {
+  margin: 14px 0 8px;
+}
+
+.chamado-card__desc {
+  min-height: 48px;
+  margin: 0;
+  color: #667085;
+  white-space: pre-wrap;
+  overflow: hidden;
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+}
+
+.chamado-card__meta {
+  flex-wrap: wrap;
+  margin: 16px 0;
+  color: #475467;
+  font-size: 12px;
+}
+
+.chamado-card__meta span {
+  background: #f2f4f7;
+  padding: 5px 8px;
+  border-radius: 7px;
+}
+
+.chamado-card__link {
+  color: #2355d6;
+  font-weight: 800;
+}
