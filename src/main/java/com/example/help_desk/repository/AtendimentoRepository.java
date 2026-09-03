@@ -1,6 +1,7 @@
 package com.example.help_desk.repository;
 
 import com.example.help_desk.model.AtendimentoModel;
+import com.example.help_desk.model.enums.StatusChamado;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 

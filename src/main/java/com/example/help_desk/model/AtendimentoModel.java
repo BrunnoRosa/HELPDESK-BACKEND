@@ -1,6 +1,8 @@
 package com.example.help_desk.model;
 
 
+import com.example.help_desk.model.enums.NivelSuporte;
+import com.example.help_desk.model.enums.StatusChamado;
 import jakarta.persistence.*;
 
 @Entity

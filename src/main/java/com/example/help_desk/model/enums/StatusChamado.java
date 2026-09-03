@@ -4,7 +4,7 @@ public enum StatusChamado {
     ABERTO,
     EM_TRIAGEM,
     EM_ATENDIMENTO,
-    PENDENTE_CONCLUSAO,
+    PENDENTE_EVIDENCIA,
     RESOLVIDO,
     FECHADO
 }

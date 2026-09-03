@@ -5,12 +5,13 @@ import com.example.help_desk.dto.atendimento.AtendimentoResponseDTO;
 import com.example.help_desk.model.AtendimentoModel;
 import com.example.help_desk.model.ChamadoModel;
 import com.example.help_desk.model.UsuarioModel;
+import com.example.help_desk.model.enums.NivelSuporte;
 import com.example.help_desk.model.enums.PerfilUsuario;
+import com.example.help_desk.model.enums.StatusChamado;
 import com.example.help_desk.repository.AtendimentoRepository;
 import com.example.help_desk.repository.ChamadoRepository;
-import jakarta.transaction.Transactional;
-
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.util.EnumMap;
 import java.util.List;

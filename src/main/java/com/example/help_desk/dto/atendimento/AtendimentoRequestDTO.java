@@ -1,8 +1,8 @@
 package com.example.help_desk.dto.atendimento;
 
 
-import jakarta.validation.constraints.Email;
-import jakarta.validation.constraints.NotBlank;
+import com.example.help_desk.model.enums.NivelSuporte;
+import com.example.help_desk.model.enums.StatusChamado;
 import jakarta.validation.constraints.NotNull;
 
 public class AtendimentoRequestDTO {

@@ -1,5 +1,9 @@
 package com.example.help_desk.dto.atendimento;
 
+import com.example.help_desk.model.AtendimentoModel;
+import com.example.help_desk.model.enums.NivelSuporte;
+import com.example.help_desk.model.enums.StatusChamado;
+
 public class AtendimentoResponseDTO {
 
     private Long id;
@@ -16,7 +20,9 @@ public class AtendimentoResponseDTO {
     public AtendimentoResponseDTO() {
     }
 
-    public AtendimentoResponseDTO(Long id, Long chamadoId, StatusChamado status, NivelSuporte nivelSuporte, String usuarioVinculado, String equipamentoVinculado, Long solicitanteId, String solicitanteNome, Long tecnicoResponsavelId, String tecnicoResponsavelNome) {
+    public AtendimentoResponseDTO(Long id, Long chamadoId, StatusChamado status, NivelSuporte nivelSuporte,
+                                  String usuarioVinculado, String equipamentoVinculado, Long solicitanteId,
+                                  String solicitanteNome, Long tecnicoResponsavelId, String tecnicoResponsavelNome) {
         this.id = id;
         this.chamadoId = chamadoId;
         this.status = status;
@@ -27,6 +33,31 @@ public class AtendimentoResponseDTO {
         this.solicitanteNome = solicitanteNome;
         this.tecnicoResponsavelId = tecnicoResponsavelId;
         this.tecnicoResponsavelNome = tecnicoResponsavelNome;
+    }
+
+    // CONSTRUTOR NECESSÁRIO PARA O METHOD REFERENCE (AtendimentoResponseDTO::new)
+    public AtendimentoResponseDTO(AtendimentoModel model) {
+        if (model != null) {
+            this.id = model.getId();
+            this.status = model.getStatus();
+            this.nivelSuporte = model.getNivelSuporte();
+            this.usuarioVinculado = model.getUsuarioVinculado();
+            this.equipamentoVinculado = model.getEquipamentoVinculado();
+
+            if (model.getChamado() != null) {
+                this.chamadoId = model.getChamado().getId();
+            }
+
+            if (model.getSolicitante() != null) {
+                this.solicitanteId = model.getSolicitante().getId();
+                this.solicitanteNome = model.getSolicitante().getNome();
+            }
+
+            if (model.getTecnicoResponsavel() != null) {
+                this.tecnicoResponsavelId = model.getTecnicoResponsavel().getId();
+                this.tecnicoResponsavelNome = model.getTecnicoResponsavel().getNome();
+            }
+        }
     }
 
     public Long getId() {
