@@ -18,7 +18,7 @@ import java.util.List;
 import java.util.Map;
 
 @RestController
-@RequestMapping("chamados")
+@RequestMapping("/chamados")
 public class ChamadoController {
 
     @Autowired
@@ -29,6 +29,7 @@ public class ChamadoController {
 
     @GetMapping
     public ResponseEntity<List<ChamadoResponseDTO>> listar(@AuthenticationPrincipal UsuarioModel usuario) {
+        UsuarioModel model = (UsuarioModel) usuario;
         return ResponseEntity.status(HttpStatus.OK).body(service.listar(usuario));
     }
 

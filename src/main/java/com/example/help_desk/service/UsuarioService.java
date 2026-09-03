@@ -7,6 +7,7 @@ import com.example.help_desk.model.UsuarioModel;
 import com.example.help_desk.model.enums.PerfilUsuario;
 import com.example.help_desk.repository.AtendimentoRepository;
 import com.example.help_desk.repository.UsuarioRepository;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
@@ -19,6 +20,7 @@ import java.util.List;
 @Service
 public class UsuarioService implements UserDetailsService {
 
+    @Autowired
     private final UsuarioRepository usuarioRepository;
     private final BCryptPasswordEncoder passwordEncoder;
     private final AtendimentoRepository atendimentoRepository;
@@ -35,7 +37,8 @@ public class UsuarioService implements UserDetailsService {
 
     @Override
     public UserDetails loadUserByUsername(String email) throws UsernameNotFoundException {
-        return buscarPorEmail(email);
+        return usuarioRepository.findByEmailIgnoreCase(email)
+                .orElseThrow(() -> new UsernameNotFoundException("Usuário não encontrado: " + email));
     }
 
     public UsuarioModel buscarPorEmail(String email) {

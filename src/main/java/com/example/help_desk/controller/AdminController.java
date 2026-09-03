@@ -17,7 +17,7 @@ import java.util.List;
 import java.util.Map;
 
 @RestController
-@RequestMapping("admin")
+@RequestMapping("/admin")
 public class AdminController {
 
     private final UsuarioService usuarioService;
