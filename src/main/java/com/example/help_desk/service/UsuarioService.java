@@ -63,6 +63,11 @@ public class UsuarioService implements UserDetailsService {
         usuario.setSenha(passwordEncoder.encode(dto.getSenha()));
         usuario.setPerfil(dto.getPerfil());
 
+        // NOVA REGRA: Atribui o nível de suporte apenas se o perfil for TÉCNICO
+        if (dto.getPerfil() == PerfilUsuario.TECNICO && dto.getNivelSuporte() != null) {
+            usuario.setNivelSuporte(dto.getNivelSuporte());
+        }
+
         return new UsuarioResponseDTO(usuarioRepository.save(usuario));
     }
 

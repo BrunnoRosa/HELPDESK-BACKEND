@@ -1,6 +1,7 @@
 package com.example.help_desk.controller;
 
 import com.example.help_desk.dto.usuario.PerfilUpdateDTO;
+import com.example.help_desk.dto.usuario.UsuarioRequestDTO;
 import com.example.help_desk.dto.usuario.UsuarioResponseDTO;
 import com.example.help_desk.model.UsuarioModel;
 import com.example.help_desk.model.enums.StatusChamado;
@@ -8,7 +9,9 @@ import com.example.help_desk.repository.AtendimentoRepository;
 import com.example.help_desk.repository.ChamadoRepository;
 import com.example.help_desk.service.UsuarioService;
 import jakarta.validation.Valid;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.security.core.annotation.AuthenticationPrincipal;
 import org.springframework.web.bind.annotation.*;
 
@@ -18,6 +21,7 @@ import java.util.Map;
 
 @RestController
 @RequestMapping("/admin")
+@PreAuthorize("hasAuthority('ADMINISTRADOR')") // TRAVA: Apenas usuários com Authority ADMINISTRADOR acessam este controller
 public class AdminController {
 
     private final UsuarioService usuarioService;
@@ -32,6 +36,13 @@ public class AdminController {
         this.usuarioService = usuarioService;
         this.chamadoRepository = chamadoRepository;
         this.atendimentoRepository = atendimentoRepository;
+    }
+
+    // NOVO ENDPOINT: Recebe os dados do front-end e cria o usuário
+    @PostMapping("/usuarios")
+    public ResponseEntity<UsuarioResponseDTO> criarUsuario(@Valid @RequestBody UsuarioRequestDTO dto) {
+        UsuarioResponseDTO novoUsuario = usuarioService.cadastrar(dto);
+        return ResponseEntity.status(HttpStatus.CREATED).body(novoUsuario);
     }
 
     @GetMapping("/usuarios")

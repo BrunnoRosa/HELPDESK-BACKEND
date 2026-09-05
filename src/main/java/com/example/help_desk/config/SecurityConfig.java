@@ -42,12 +42,18 @@ public class SecurityConfig {
     @Bean
     public SecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception {
         http
-                .cors(cors -> cors.configurationSource(corsConfigurationSource)) // Usa as configurações globais de CORS
+                .cors(cors -> cors.configurationSource(corsConfigurationSource))
                 .csrf(AbstractHttpConfigurer::disable)
                 .sessionManagement(session -> session.sessionCreationPolicy(SessionCreationPolicy.STATELESS))
                 .authorizeHttpRequests(auth -> auth
-                        .requestMatchers(HttpMethod.OPTIONS, "/**").permitAll() // Libera as requisições de preflight do navegador
-                        .requestMatchers("/auth/**").permitAll()
+                        .requestMatchers(HttpMethod.OPTIONS, "/**").permitAll() 
+                        
+                        // MUDANÇA: Substituído "/auth/**" por "/auth/login". Registro público foi removido.
+                        .requestMatchers("/auth/login").permitAll() 
+                        
+                        // MUDANÇA: Proteção extra no SecurityFilterChain para garantir que a rota admin esteja fechada
+                        .requestMatchers("/admin/**").hasAuthority("ADMINISTRADOR") 
+                        
                         .anyRequest().authenticated()
                 )
                 .authenticationProvider(authenticationProvider())
