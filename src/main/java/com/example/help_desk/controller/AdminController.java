@@ -1,6 +1,7 @@
 package com.example.help_desk.controller;
 
 import com.example.help_desk.dto.usuario.PerfilUpdateDTO;
+import com.example.help_desk.dto.usuario.UsuarioRequestDTO;
 import com.example.help_desk.dto.usuario.UsuarioResponseDTO;
 import com.example.help_desk.model.UsuarioModel;
 import com.example.help_desk.model.enums.StatusChamado;
@@ -8,8 +9,10 @@ import com.example.help_desk.repository.AtendimentoRepository;
 import com.example.help_desk.repository.ChamadoRepository;
 import com.example.help_desk.service.UsuarioService;
 import jakarta.validation.Valid;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.core.annotation.AuthenticationPrincipal;
+import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.LinkedHashMap;
@@ -42,6 +45,15 @@ public class AdminController {
     @GetMapping("/tecnicos")
     public ResponseEntity<List<UsuarioResponseDTO>> listarTecnicos() {
         return ResponseEntity.ok(usuarioService.listarTecnicos());
+    }
+
+    @PostMapping("/usuarios")
+    public ResponseEntity<UsuarioResponseDTO> cadastrarUsuario(@Valid @RequestBody UsuarioRequestDTO dto) {
+        var auth = SecurityContextHolder.getContext().getAuthentication();
+        System.out.println(">>> Usuário realizando o cadastro: " + auth.getName());
+        System.out.println(">>> Permissões: " + auth.getAuthorities());
+
+        return ResponseEntity.status(HttpStatus.CREATED).body(usuarioService.cadastrar(dto));
     }
 
     @PutMapping("/usuarios/{id}/perfil")
