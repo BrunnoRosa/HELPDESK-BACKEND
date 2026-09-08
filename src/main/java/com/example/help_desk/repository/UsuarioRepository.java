@@ -11,9 +11,15 @@ import java.util.Optional;
 @Repository
 public interface UsuarioRepository extends JpaRepository<UsuarioModel, Long> {
 
+    // Método usado pelo UsuarioService para login/busca case-insensitive
     Optional<UsuarioModel> findByEmailIgnoreCase(String email);
 
+    // Verificação de e-mail duplicado
     boolean existsByEmailIgnoreCase(String email);
 
+    // Listagem por perfil (ex: buscar técnicos)
     List<UsuarioModel> findAllByPerfil(PerfilUsuario perfil);
+
+    // Verificação do Admin no AdminInitializerConfig
+    boolean existsByPerfil(PerfilUsuario perfil);
 }
