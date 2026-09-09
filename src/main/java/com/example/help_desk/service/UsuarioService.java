@@ -76,7 +76,11 @@ public class UsuarioService implements UserDetailsService {
     }
 
     @Transactional
-    public UsuarioResponseDTO atualizarPerfil(Long id, PerfilUpdateDTO dto) {
+    public UsuarioResponseDTO atualizarPerfil(Long id, PerfilUpdateDTO dto, Long idUsuarioLogado) {
+        if (id.equals(idUsuarioLogado)) {
+            throw new IllegalArgumentException("Não é permitido alterar o seu próprio perfil de acesso.");
+        }
+
         UsuarioModel usuario = buscarModelPorId(id);
         usuario.setPerfil(dto.getPerfil());
         return new UsuarioResponseDTO(usuarioRepository.save(usuario));

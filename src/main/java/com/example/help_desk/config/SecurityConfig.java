@@ -47,10 +47,10 @@ public class SecurityConfig {
                 .sessionManagement(session -> session.sessionCreationPolicy(SessionCreationPolicy.STATELESS))
                 .authorizeHttpRequests(auth -> auth
                         .requestMatchers(HttpMethod.OPTIONS, "/**").permitAll()
-                        .requestMatchers("/auth/**").permitAll()
+                        .requestMatchers("/auth/login").permitAll()
 
-                        // REGRA ADICIONADA: Apenas ADMIN pode criar usuários
-                        .requestMatchers(HttpMethod.POST, "/usuarios").hasRole("ADMIN")
+
+                        .requestMatchers("/admin/**").hasRole("ADMINISTRADOR")
 
                         .anyRequest().authenticated()
                 )
