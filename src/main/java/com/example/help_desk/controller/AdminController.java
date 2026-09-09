@@ -1,6 +1,7 @@
 package com.example.help_desk.controller;
 
 import com.example.help_desk.dto.usuario.PerfilUpdateDTO;
+import com.example.help_desk.dto.usuario.UsuarioRequestDTO;
 import com.example.help_desk.dto.usuario.UsuarioResponseDTO;
 import com.example.help_desk.model.UsuarioModel;
 import com.example.help_desk.model.enums.StatusChamado;
@@ -8,6 +9,7 @@ import com.example.help_desk.repository.AtendimentoRepository;
 import com.example.help_desk.repository.ChamadoRepository;
 import com.example.help_desk.service.UsuarioService;
 import jakarta.validation.Valid;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.core.annotation.AuthenticationPrincipal;
 import org.springframework.web.bind.annotation.*;
@@ -44,12 +46,18 @@ public class AdminController {
         return ResponseEntity.ok(usuarioService.listarTecnicos());
     }
 
+    @PostMapping("/usuarios")
+    public ResponseEntity<UsuarioResponseDTO> cadastrarUsuario(@Valid @RequestBody UsuarioRequestDTO dto) {
+        return ResponseEntity.status(HttpStatus.CREATED).body(usuarioService.cadastrar(dto));
+    }
+
     @PutMapping("/usuarios/{id}/perfil")
     public ResponseEntity<UsuarioResponseDTO> atualizarPerfil(
             @PathVariable Long id,
-            @Valid @RequestBody PerfilUpdateDTO dto
+            @Valid @RequestBody PerfilUpdateDTO dto,
+            @AuthenticationPrincipal UsuarioModel usuarioLogado
     ) {
-        return ResponseEntity.ok(usuarioService.atualizarPerfil(id, dto));
+        return ResponseEntity.ok(usuarioService.atualizarPerfil(id, dto, usuarioLogado.getId()));
     }
 
     @DeleteMapping("/usuarios/{id}")
