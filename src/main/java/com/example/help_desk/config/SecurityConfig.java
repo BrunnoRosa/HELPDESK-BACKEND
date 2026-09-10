@@ -46,12 +46,17 @@ public class SecurityConfig {
                 .csrf(AbstractHttpConfigurer::disable)
                 .sessionManagement(session -> session.sessionCreationPolicy(SessionCreationPolicy.STATELESS))
                 .authorizeHttpRequests(auth -> auth
+                        // 1. Libera requisições de CORS Preflight e Login
                         .requestMatchers(HttpMethod.OPTIONS, "/**").permitAll()
                         .requestMatchers("/auth/login").permitAll()
 
+                        // 2. Libera alteração de senha para qualquer usuário autenticado
+                        .requestMatchers(HttpMethod.PUT, "/usuarios/alterar-senha").authenticated()
 
+                        // 3. Restringe o painel administrativo apenas para ADMINISTRADOR
                         .requestMatchers("/admin/**").hasRole("ADMINISTRADOR")
 
+                        // 4. Exige autenticação para qualquer outra requisição
                         .anyRequest().authenticated()
                 )
                 .authenticationProvider(authenticationProvider())

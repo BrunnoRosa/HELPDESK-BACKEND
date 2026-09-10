@@ -1,5 +1,6 @@
 package com.example.help_desk.service;
 
+import com.example.help_desk.dto.senha.ChangePasswordDTO;
 import com.example.help_desk.dto.usuario.PerfilUpdateDTO;
 import com.example.help_desk.dto.usuario.UsuarioRequestDTO;
 import com.example.help_desk.dto.usuario.UsuarioResponseDTO;
@@ -7,7 +8,6 @@ import com.example.help_desk.model.UsuarioModel;
 import com.example.help_desk.model.enums.PerfilUsuario;
 import com.example.help_desk.repository.AtendimentoRepository;
 import com.example.help_desk.repository.UsuarioRepository;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
@@ -20,7 +20,6 @@ import java.util.List;
 @Service
 public class UsuarioService implements UserDetailsService {
 
-    @Autowired
     private final UsuarioRepository usuarioRepository;
     private final BCryptPasswordEncoder passwordEncoder;
     private final AtendimentoRepository atendimentoRepository;
@@ -98,5 +97,27 @@ public class UsuarioService implements UserDetailsService {
             throw new IllegalArgumentException("Usuário possui chamados vinculados e não pode ser excluído ❌");
         }
         usuarioRepository.deleteById(id);
+    }
+
+    @Transactional
+    public void alterarSenha(Long idUsuarioLogado, ChangePasswordDTO dto) {
+        UsuarioModel usuario = buscarModelPorId(idUsuarioLogado);
+
+        if (!passwordEncoder.matches(dto.senhaAtual(), usuario.getSenha())) {
+            throw new IllegalArgumentException("A senha atual está incorreta.");
+        }
+
+        if (!dto.novaSenha().equals(dto.confirmarNovaSenha())) {
+            throw new IllegalArgumentException("A nova senha e a confirmação não coincidem.");
+        }
+
+        usuario.setSenha(passwordEncoder.encode(dto.novaSenha()));
+        usuarioRepository.save(usuario);
+    }
+    @Transactional
+    public void resetarSenhaPeloAdmin(Long idUsuario, String novaSenha) {
+        UsuarioModel usuario = buscarModelPorId(idUsuario);
+        usuario.setSenha(passwordEncoder.encode(novaSenha));
+        usuarioRepository.save(usuario);
     }
 }

@@ -1,5 +1,6 @@
 package com.example.help_desk.controller;
 
+import com.example.help_desk.dto.senha.ResetPasswordDTO;
 import com.example.help_desk.dto.usuario.PerfilUpdateDTO;
 import com.example.help_desk.dto.usuario.UsuarioRequestDTO;
 import com.example.help_desk.dto.usuario.UsuarioResponseDTO;
@@ -58,6 +59,15 @@ public class AdminController {
             @AuthenticationPrincipal UsuarioModel usuarioLogado
     ) {
         return ResponseEntity.ok(usuarioService.atualizarPerfil(id, dto, usuarioLogado.getId()));
+    }
+
+    @PutMapping("/usuarios/{id}/reset-senha")
+    public ResponseEntity<Void> resetarSenhaUsuario(
+            @PathVariable Long id,
+            @Valid @RequestBody ResetPasswordDTO dto
+    ) {
+        usuarioService.resetarSenhaPeloAdmin(id, dto.novaSenha());
+        return ResponseEntity.noContent().build();
     }
 
     @DeleteMapping("/usuarios/{id}")
