@@ -6,7 +6,7 @@ import com.example.help_desk.model.enums.StatusChamado;
 import jakarta.persistence.*;
 
 @Entity
-@Table(name = "tab_clientes")
+@Table(name = "tab_atendimentos")
 public class AtendimentoModel {
 
     @Id
