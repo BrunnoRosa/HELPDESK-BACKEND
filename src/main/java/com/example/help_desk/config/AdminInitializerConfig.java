@@ -22,7 +22,7 @@ public class AdminInitializerConfig {
                 admin.setPerfil(PerfilUsuario.ADMINISTRADOR);
 
                 repository.save(admin);
-                System.out.println(">>> Usuário ADMIN inicial criado com sucesso: admin@email.com <<<");
+                System.out.println(">ADMIN inicial criado com sucesso: admin@email.com <<<");
             }
         };
     }
