@@ -1,7 +1,7 @@
 package com.example.help_desk.model;
 
-
 import com.example.help_desk.model.enums.Criticidade;
+import com.example.help_desk.model.enums.NivelSuporte;
 import com.example.help_desk.model.enums.Ocorrencia;
 import jakarta.persistence.*;
 
@@ -20,12 +20,27 @@ public class ChamadoModel {
     @Column(nullable = false)
     private Ocorrencia ocorrenciaChamado;
 
-    @Column(nullable = false)
+    @Column(nullable = false, columnDefinition = "TEXT")
     private String descricaoChamado;
 
     @Enumerated(EnumType.STRING)
     @Column(nullable = false)
     private Criticidade prioridadeChamado;
+
+    // Relacionamento com o técnico que assumiu o chamado
+    @ManyToOne
+    @JoinColumn(name = "tecnico_responsavel_id")
+    private UsuarioModel tecnicoResponsavel;
+
+    // Status do chamado (ex: ABERTO, EM_ANDAMENTO, CONCLUIDO)
+    @Column(name = "status_chamado")
+    private String statusChamado = "ABERTO";
+
+    // Fila de nível de suporte (ex: N1, N2, N3)
+    @Enumerated(EnumType.STRING)
+    @Column(name = "nivel_suporte")
+//    private String nivelSuporte = "N1";
+    private NivelSuporte nivelSuporte;
 
     public ChamadoModel() {
     }
@@ -77,6 +92,28 @@ public class ChamadoModel {
     public void setPrioridadeChamado(Criticidade prioridadeChamado) {
         this.prioridadeChamado = prioridadeChamado;
     }
+
+    public UsuarioModel getTecnicoResponsavel() {
+        return tecnicoResponsavel;
+    }
+
+    public void setTecnicoResponsavel(UsuarioModel tecnicoResponsavel) {
+        this.tecnicoResponsavel = tecnicoResponsavel;
+    }
+
+    public String getStatusChamado() {
+        return statusChamado;
+    }
+
+    public void setStatusChamado(String statusChamado) {
+        this.statusChamado = statusChamado;
+    }
+
+    public NivelSuporte getNivelSuporte() {
+        return nivelSuporte;
+    }
+
+    public void setNivelSuporte(NivelSuporte nivelSuporte) {
+        this.nivelSuporte = nivelSuporte;
+    }
 }
-
-

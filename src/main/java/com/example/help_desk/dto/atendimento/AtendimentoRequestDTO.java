@@ -7,13 +7,13 @@ import jakarta.validation.constraints.NotNull;
 
 public class AtendimentoRequestDTO {
 
-    @NotNull(message = "Informe o chamado ❌")
+    @NotNull(message = "Informe o chamado")
     private Long chamadoId;
 
-    @NotNull(message = "Informe o status ❌")
+    @NotNull(message = "Informe o status")
     private StatusChamado status;
 
-    @NotNull(message = "Informe o nível de suporte ❌")
+    @NotNull(message = "Informe o nível de suporte")
     private NivelSuporte nivelSuporte;
 
     private String usuarioVinculado;
@@ -23,11 +23,11 @@ public class AtendimentoRequestDTO {
     public AtendimentoRequestDTO() {
     }
 
-    public @NotNull(message = "Informe o chamado ❌") Long getChamadoId() {
+    public @NotNull(message = "Informe o chamado") Long getChamadoId() {
         return chamadoId;
     }
 
-    public void setChamadoId(@NotNull(message = "Informe o chamado ❌") Long chamadoId) {
+    public void setChamadoId(@NotNull(message = "Informe o chamado") Long chamadoId) {
         this.chamadoId = chamadoId;
     }
 
