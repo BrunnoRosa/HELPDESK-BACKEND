@@ -62,14 +62,14 @@ public class AtendimentoService {
     public AtendimentoResponseDTO buscarPorChamado(Long chamadoId, UsuarioModel usuario) {
         acessoService.validarAcessoChamado(usuario, chamadoId);
         AtendimentoModel atendimento = atendimentoRepository.findByChamadoId(chamadoId)
-                .orElseThrow(() -> new IllegalArgumentException("Atendimento não localizado ❌"));
+                .orElseThrow(() -> new IllegalArgumentException("Atendimento não localizado"));
         return new AtendimentoResponseDTO(atendimento);
     }
 
     @Transactional
     public AtendimentoResponseDTO criarInicial(Long chamadoId, UsuarioModel solicitante) {
         ChamadoModel chamado = chamadoRepository.findById(chamadoId)
-                .orElseThrow(() -> new IllegalArgumentException("Chamado não localizado ❌"));
+                .orElseThrow(() -> new IllegalArgumentException("Chamado não localizado"));
 
         AtendimentoModel existente = atendimentoRepository.findByChamadoId(chamadoId).orElse(null);
         if (existente != null) {
@@ -83,13 +83,18 @@ public class AtendimentoService {
         atendimento.setNivelSuporte(NivelSuporte.N1);
         atendimento.setUsuarioVinculado(solicitante.getNome());
 
+        // Sincronizando com a entidade principal de Chamado
+        chamado.setStatusChamado(StatusChamado.ABERTO.name());
+        chamado.setNivelSuporte(NivelSuporte.N1);
+        chamadoRepository.save(chamado);
+
         return new AtendimentoResponseDTO(atendimentoRepository.save(atendimento));
     }
 
     @Transactional
     public AtendimentoResponseDTO atualizar(AtendimentoRequestDTO dto, UsuarioModel usuarioAtual) {
         AtendimentoModel atendimento = atendimentoRepository.findByChamadoId(dto.getChamadoId())
-                .orElseThrow(() -> new IllegalArgumentException("Atendimento não localizado ❌"));
+                .orElseThrow(() -> new IllegalArgumentException("Atendimento não localizado"));
 
         validarTransicao(atendimento.getStatus(), dto.getStatus());
         validarNivel(dto.getStatus(), dto.getNivelSuporte());
@@ -111,12 +116,19 @@ public class AtendimentoService {
             atendimento.setTecnicoResponsavel(usuarioAtual);
         }
 
+        // Sincronizando o Responsável, Status e Nível com a entidade principal do Chamado
+        ChamadoModel chamado = atendimento.getChamado();
+        chamado.setStatusChamado(dto.getStatus().name());
+        chamado.setNivelSuporte(dto.getNivelSuporte());
+        chamado.setTecnicoResponsavel(atendimento.getTecnicoResponsavel());
+        chamadoRepository.save(chamado);
+
         return new AtendimentoResponseDTO(atendimentoRepository.save(atendimento));
     }
 
     private void validarPerfilTecnico(UsuarioModel usuario) {
         if (usuario.getPerfil() != PerfilUsuario.TECNICO && usuario.getPerfil() != PerfilUsuario.ADMINISTRADOR) {
-            throw new IllegalArgumentException("O responsável precisa possuir perfil TÉCNICO ou ADMINISTRADOR ❌");
+            throw new IllegalArgumentException("O responsável precisa possuir perfil TÉCNICO ou ADMINISTRADOR");
         }
     }
 

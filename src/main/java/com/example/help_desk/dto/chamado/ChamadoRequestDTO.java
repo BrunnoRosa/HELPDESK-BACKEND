@@ -9,16 +9,16 @@ public class ChamadoRequestDTO {
 
     private Long id;
 
-    @NotBlank(message = "Título de Obrigatório ❌")
+    @NotBlank(message = "Título de Obrigatório")
     private String tituloChamado;
 
-    @NotNull(message = "Defina uma Opção 🔎")
+    @NotNull(message = "Defina uma Opção")
     private Ocorrencia ocorrenciaChamado;
 
-    @NotBlank(message = "Descreva a Falha 📝")
+    @NotBlank(message = "Descreva a Falha")
     private String descricaoChamado;
 
-    @NotNull(message = "Escolha a Prioridade 🔎")
+    @NotNull(message = "Escolha a Prioridade")
     private Criticidade prioridadeChamado;
 
     public ChamadoRequestDTO() {
@@ -40,15 +40,15 @@ public class ChamadoRequestDTO {
         this.id = id;
     }
 
-    public @NotBlank(message = "Título de Obrigatório ❌") String getTituloChamado() {
+    public @NotBlank(message = "Título de Obrigatório") String getTituloChamado() {
         return tituloChamado;
     }
 
-    public void setTituloChamado(@NotBlank(message = "Título de Obrigatório ❌") String tituloChamado) {
+    public void setTituloChamado(@NotBlank(message = "Título de Obrigatório") String tituloChamado) {
         this.tituloChamado = tituloChamado;
     }
 
-    public @NotNull(message = "Defina uma Opção 🔎") Ocorrencia getOcorrenciaChamado() {
+    public @NotNull(message = "Defina uma Opção") Ocorrencia getOcorrenciaChamado() {
         return ocorrenciaChamado;
     }
 
@@ -56,7 +56,7 @@ public class ChamadoRequestDTO {
         this.ocorrenciaChamado = ocorrenciaChamado;
     }
 
-    public @NotBlank(message = "Descreva a Falha 📝") String getDescricaoChamado() {
+    public @NotBlank(message = "Descreva a Falha") String getDescricaoChamado() {
         return descricaoChamado;
     }
 
@@ -64,11 +64,11 @@ public class ChamadoRequestDTO {
         this.descricaoChamado = descricaoChamado;
     }
 
-    public @NotNull(message = "Escolha a Prioridade 🔎") Criticidade getPrioridadeChamado() {
+    public @NotNull(message = "Escolha a Prioridade") Criticidade getPrioridadeChamado() {
         return prioridadeChamado;
     }
 
-    public void setPrioridadeChamado(@NotNull(message = "Escolha a Prioridade 🔎") Criticidade prioridadeChamado) {
+    public void setPrioridadeChamado(@NotNull(message = "Escolha a Prioridade") Criticidade prioridadeChamado) {
         this.prioridadeChamado = prioridadeChamado;
     }
 }
