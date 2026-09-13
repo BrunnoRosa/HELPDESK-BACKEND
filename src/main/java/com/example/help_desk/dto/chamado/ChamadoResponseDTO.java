@@ -5,12 +5,15 @@ import com.example.help_desk.model.enums.Criticidade;
 import com.example.help_desk.model.enums.NivelSuporte;
 import com.example.help_desk.model.enums.Ocorrencia;
 
+import java.time.LocalDateTime;
+
 public class ChamadoResponseDTO {
     private Long id;
     private String tituloChamado;
     private Ocorrencia ocorrenciaChamado;
     private String descricaoChamado;
     private Criticidade prioridadeChamado;
+    private LocalDateTime dataAberturaChamado;
 
     // Novos campos adicionados
     private String statusChamado;
@@ -26,6 +29,7 @@ public class ChamadoResponseDTO {
         this.ocorrenciaChamado = chamado.getOcorrenciaChamado();
         this.descricaoChamado = chamado.getDescricaoChamado();
         this.prioridadeChamado = chamado.getPrioridadeChamado();
+        this.dataAberturaChamado = chamado.getDataAberturaChamado();
 
         // Mapeamento dos novos campos
         this.statusChamado = chamado.getStatusChamado();
@@ -80,4 +84,7 @@ public class ChamadoResponseDTO {
         public String getNome() { return nome; }
         public void setNome(String nome) { this.nome = nome; }
     }
+
+    public LocalDateTime getDataAberturaChamado() { return dataAberturaChamado; }
+    public void setDataAberturaChamado(LocalDateTime dataAberturaChamado) { this.dataAberturaChamado = dataAberturaChamado; }
 }
