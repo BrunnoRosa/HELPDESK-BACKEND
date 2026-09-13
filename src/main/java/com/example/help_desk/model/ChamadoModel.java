@@ -4,6 +4,9 @@ import com.example.help_desk.model.enums.Criticidade;
 import com.example.help_desk.model.enums.NivelSuporte;
 import com.example.help_desk.model.enums.Ocorrencia;
 import jakarta.persistence.*;
+import org.hibernate.annotations.CreationTimestamp;
+
+import java.time.LocalDateTime;
 
 @Entity
 @Table(name = "tab_chamados")
@@ -12,6 +15,17 @@ public class ChamadoModel {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
+
+
+
+    @Column(name = "data_abertura_chamado", nullable = false, updatable = false)
+    @CreationTimestamp
+    private LocalDateTime dataAberturaChamado;
+
+    public LocalDateTime getDataAberturaChamado() {
+        return dataAberturaChamado;
+    }
+
 
     @Column(nullable = false)
     private String tituloChamado;
