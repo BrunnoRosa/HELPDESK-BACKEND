@@ -21,15 +21,18 @@ public class ChamadoRequestDTO {
     @NotNull(message = "Escolha a Prioridade")
     private Criticidade prioridadeChamado;
 
+    private String imagemChamado;
+
     public ChamadoRequestDTO() {
     }
 
-    public ChamadoRequestDTO(Long id, String tituloChamado, Ocorrencia ocorrenciaChamado, String descricaoChamado, Criticidade prioridadeChamado) {
+    public ChamadoRequestDTO(Long id, String tituloChamado, Ocorrencia ocorrenciaChamado, String descricaoChamado, Criticidade prioridadeChamado, String imagemChamado) {
         this.id = id;
         this.tituloChamado = tituloChamado;
         this.ocorrenciaChamado = ocorrenciaChamado;
         this.descricaoChamado = descricaoChamado;
         this.prioridadeChamado = prioridadeChamado;
+        this.imagemChamado = imagemChamado;
     }
 
     public Long getId() {
@@ -40,35 +43,43 @@ public class ChamadoRequestDTO {
         this.id = id;
     }
 
-    public @NotBlank(message = "Título de Obrigatório") String getTituloChamado() {
+    public String getTituloChamado() {
         return tituloChamado;
     }
 
-    public void setTituloChamado(@NotBlank(message = "Título de Obrigatório") String tituloChamado) {
+    public void setTituloChamado(String tituloChamado) {
         this.tituloChamado = tituloChamado;
     }
 
-    public @NotNull(message = "Defina uma Opção") Ocorrencia getOcorrenciaChamado() {
+    public Ocorrencia getOcorrenciaChamado() {
         return ocorrenciaChamado;
     }
 
-    public void setOcorrenciaChamado(@NotNull(message = "Defina uma Opção 🔎") Ocorrencia ocorrenciaChamado) {
+    public void setOcorrenciaChamado(Ocorrencia ocorrenciaChamado) {
         this.ocorrenciaChamado = ocorrenciaChamado;
     }
 
-    public @NotBlank(message = "Descreva a Falha") String getDescricaoChamado() {
+    public String getDescricaoChamado() {
         return descricaoChamado;
     }
 
-    public void setDescricaoChamado(@NotBlank(message = "Descreva a Falha 📝") String descricaoChamado) {
+    public void setDescricaoChamado(String descricaoChamado) {
         this.descricaoChamado = descricaoChamado;
     }
 
-    public @NotNull(message = "Escolha a Prioridade") Criticidade getPrioridadeChamado() {
+    public Criticidade getPrioridadeChamado() {
         return prioridadeChamado;
     }
 
-    public void setPrioridadeChamado(@NotNull(message = "Escolha a Prioridade") Criticidade prioridadeChamado) {
+    public void setPrioridadeChamado(Criticidade prioridadeChamado) {
         this.prioridadeChamado = prioridadeChamado;
+    }
+
+    public String getImagemChamado() {
+        return imagemChamado;
+    }
+
+    public void setImagemChamado(String imagemChamado) {
+        this.imagemChamado = imagemChamado;
     }
 }

@@ -17,7 +17,6 @@ public class ChamadoModel {
     private Long id;
 
 
-
     @Column(name = "data_abertura_chamado", nullable = false, updatable = false)
     @CreationTimestamp
     private LocalDateTime dataAberturaChamado;
@@ -56,15 +55,23 @@ public class ChamadoModel {
 //    private String nivelSuporte = "N1";
     private NivelSuporte nivelSuporte;
 
+    @Column(name = "imagem_chamado", columnDefinition = "LONGTEXT")
+    private String imagemChamado;
+
     public ChamadoModel() {
     }
 
-    public ChamadoModel(Long id, String tituloChamado, Ocorrencia ocorrenciaChamado, String descricaoChamado, Criticidade prioridadeChamado) {
+    public ChamadoModel(Long id, LocalDateTime dataAberturaChamado, String tituloChamado, Ocorrencia ocorrenciaChamado, String descricaoChamado, Criticidade prioridadeChamado, UsuarioModel tecnicoResponsavel, String statusChamado, NivelSuporte nivelSuporte, String imagemChamado) {
         this.id = id;
+        this.dataAberturaChamado = dataAberturaChamado;
         this.tituloChamado = tituloChamado;
         this.ocorrenciaChamado = ocorrenciaChamado;
         this.descricaoChamado = descricaoChamado;
         this.prioridadeChamado = prioridadeChamado;
+        this.tecnicoResponsavel = tecnicoResponsavel;
+        this.statusChamado = statusChamado;
+        this.nivelSuporte = nivelSuporte;
+        this.imagemChamado = imagemChamado;
     }
 
     public Long getId() {
@@ -73,6 +80,10 @@ public class ChamadoModel {
 
     public void setId(Long id) {
         this.id = id;
+    }
+
+    public void setDataAberturaChamado(LocalDateTime dataAberturaChamado) {
+        this.dataAberturaChamado = dataAberturaChamado;
     }
 
     public String getTituloChamado() {
@@ -129,5 +140,13 @@ public class ChamadoModel {
 
     public void setNivelSuporte(NivelSuporte nivelSuporte) {
         this.nivelSuporte = nivelSuporte;
+    }
+
+    public String getImagemChamado() {
+        return imagemChamado;
+    }
+
+    public void setImagemChamado(String imagemChamado) {
+        this.imagemChamado = imagemChamado;
     }
 }
