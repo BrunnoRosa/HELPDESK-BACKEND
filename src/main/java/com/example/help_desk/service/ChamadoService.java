@@ -60,6 +60,9 @@ public class ChamadoService {
 
     @Transactional
     public ChamadoModel salvar(ChamadoRequestDTO salvarDTO) {
+
+        System.out.println("Imagem recebida no DTO: " + salvarDTO.getImagemChamado());
+
         ChamadoModel novoChamado = new ChamadoModel();
         novoChamado.setTituloChamado(salvarDTO.getTituloChamado());
         novoChamado.setOcorrenciaChamado(salvarDTO.getOcorrenciaChamado());
@@ -67,6 +70,7 @@ public class ChamadoService {
         novoChamado.setPrioridadeChamado(salvarDTO.getPrioridadeChamado());
         novoChamado.setImagemChamado(salvarDTO.getImagemChamado());
         return chamadoRepository.save(novoChamado);
+
     }
 
     @Transactional
@@ -82,7 +86,12 @@ public class ChamadoService {
         novoRegistro.setOcorrenciaChamado(atualizarDTO.getOcorrenciaChamado());
         novoRegistro.setDescricaoChamado(descricaoAtual + "\n" + novaAtualizacao);
         novoRegistro.setPrioridadeChamado(atualizarDTO.getPrioridadeChamado());
-        novoRegistro.setImagemChamado(atualizarDTO.getImagemChamado());
+
+        // PROTEÇÃO: Só atualiza a imagem se uma nova imagem não nula/vazia for enviada no DTO.
+        // Se vier null ou vazia no PUT, mantém a imagem que já está no banco de dados.
+        if (atualizarDTO.getImagemChamado() != null && !atualizarDTO.getImagemChamado().isBlank()) {
+            novoRegistro.setImagemChamado(atualizarDTO.getImagemChamado());
+        }
 
         return chamadoRepository.save(novoRegistro);
     }
