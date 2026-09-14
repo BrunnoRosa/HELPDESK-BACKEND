@@ -14,6 +14,7 @@ public class ChamadoResponseDTO {
     private String descricaoChamado;
     private Criticidade prioridadeChamado;
     private LocalDateTime dataAberturaChamado;
+    private String imagemChamado;
 
     // Novos campos adicionados
     private String statusChamado;
@@ -30,6 +31,7 @@ public class ChamadoResponseDTO {
         this.descricaoChamado = chamado.getDescricaoChamado();
         this.prioridadeChamado = chamado.getPrioridadeChamado();
         this.dataAberturaChamado = chamado.getDataAberturaChamado();
+        this.imagemChamado = chamado.getImagemChamado();
 
         // Mapeamento dos novos campos
         this.statusChamado = chamado.getStatusChamado();
@@ -58,6 +60,9 @@ public class ChamadoResponseDTO {
 
     public Criticidade getPrioridadeChamado() { return prioridadeChamado; }
     public void setPrioridadeChamado(Criticidade prioridadeChamado) { this.prioridadeChamado = prioridadeChamado; }
+
+    public String getImagemChamado() { return imagemChamado; }
+    public void setImagemChamado(String imagemChamado) {this.imagemChamado = imagemChamado; }
 
     public String getStatusChamado() { return statusChamado; }
     public void setStatusChamado(String statusChamado) { this.statusChamado = statusChamado; }

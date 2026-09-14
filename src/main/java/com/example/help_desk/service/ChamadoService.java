@@ -65,6 +65,7 @@ public class ChamadoService {
         novoChamado.setOcorrenciaChamado(salvarDTO.getOcorrenciaChamado());
         novoChamado.setDescricaoChamado(salvarDTO.getDescricaoChamado());
         novoChamado.setPrioridadeChamado(salvarDTO.getPrioridadeChamado());
+        novoChamado.setImagemChamado(salvarDTO.getImagemChamado());
         return chamadoRepository.save(novoChamado);
     }
 
@@ -81,6 +82,7 @@ public class ChamadoService {
         novoRegistro.setOcorrenciaChamado(atualizarDTO.getOcorrenciaChamado());
         novoRegistro.setDescricaoChamado(descricaoAtual + "\n" + novaAtualizacao);
         novoRegistro.setPrioridadeChamado(atualizarDTO.getPrioridadeChamado());
+        novoRegistro.setImagemChamado(atualizarDTO.getImagemChamado());
 
         return chamadoRepository.save(novoRegistro);
     }
