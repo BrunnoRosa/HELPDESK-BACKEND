@@ -23,11 +23,11 @@ public class CorsConfig implements WebMvcConfigurer {
                 .allowCredentials(true);
     }
 
-    // Bean para integrar perfeitamente com o Spring Security
+    // Bean para integrar perfeitamente com o Spring Security...
     @Bean
     public CorsConfigurationSource corsConfigurationSource() {
         CorsConfiguration configuration = new CorsConfiguration();
-        configuration.setAllowedOrigins(List.of("http://localhost:3000", "http://localhost:5173"));
+        configuration.setAllowedOrigins(List.of("http://localhost:3000", "http://localhost:5173", "helpdesk-frontend-production-dcce.up.railway.app"));
         configuration.setAllowedMethods(Arrays.asList("GET", "POST", "PUT", "DELETE", "PATCH", "OPTIONS"));
         configuration.setAllowedHeaders(List.of("*"));
         configuration.setAllowCredentials(true);
