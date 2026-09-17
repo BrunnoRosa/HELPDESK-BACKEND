@@ -23,7 +23,7 @@ public class CorsConfig implements WebMvcConfigurer {
                 .allowCredentials(true);
     }
 
-    // Bean para integrar perfeitamente com o Spring Security
+    // Bean para integrar perfeitamente com o Spring Security...
     @Bean
     public CorsConfigurationSource corsConfigurationSource() {
         CorsConfiguration configuration = new CorsConfiguration();
