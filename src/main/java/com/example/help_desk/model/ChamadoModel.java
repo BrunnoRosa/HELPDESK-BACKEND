@@ -33,7 +33,7 @@ public class ChamadoModel {
     @Column(nullable = false)
     private Ocorrencia ocorrenciaChamado;
 
-    @Column(nullable = false, columnDefinition = "TEXT")
+    @Column(name = "descricao_chamado", nullable = false, columnDefinition = "TEXT")
     private String descricaoChamado;
 
     @Enumerated(EnumType.STRING)
