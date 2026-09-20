@@ -2,11 +2,15 @@ package com.example.help_desk.service;
 
 import com.example.help_desk.dto.chamado.ChamadoRequestDTO;
 import com.example.help_desk.dto.chamado.ChamadoResponseDTO;
+import com.example.help_desk.dto.chamado.EvidenciaRequestDTO;
+import com.example.help_desk.dto.chamado.EvidenciaResponseDTO;
 import com.example.help_desk.model.ChamadoModel;
+import com.example.help_desk.model.EvidenciaModel;
 import com.example.help_desk.model.UsuarioModel;
 import com.example.help_desk.model.enums.PerfilUsuario;
 import com.example.help_desk.repository.AtendimentoRepository;
 import com.example.help_desk.repository.ChamadoRepository;
+import com.example.help_desk.repository.EvidenciaRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
@@ -14,6 +18,7 @@ import org.springframework.transaction.annotation.Transactional;
 
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
+import java.util.ArrayList;
 import java.util.List;
 
 @Service
@@ -30,6 +35,9 @@ public class ChamadoService {
 
     @Autowired
     private AcessoService acessoService;
+
+    @Autowired
+    private EvidenciaRepository evidenciaRepository;
 
     @Transactional(readOnly = true)
     public List<ChamadoResponseDTO> listar(UsuarioModel usuario) {
@@ -55,7 +63,48 @@ public class ChamadoService {
                         )
                 );
 
-        return new ChamadoResponseDTO(chamado);
+        ChamadoResponseDTO dto = new ChamadoResponseDTO(chamado);
+        dto.setEvidencias(listarEvidencias(chamado));
+        return dto;
+    }
+
+    // Monta a lista completa de anexos do chamado: primeiro a foto de
+    // abertura (que ainda vive no campo legado imagemChamado, de antes de
+    // existir a tabela de evidências), depois cada evidência enviada depois
+    // - assim nenhuma foto some quando outra é anexada.
+    private List<EvidenciaResponseDTO> listarEvidencias(ChamadoModel chamado) {
+        List<EvidenciaResponseDTO> lista = new ArrayList<>();
+
+        if (chamado.getImagemChamado() != null && !chamado.getImagemChamado().isBlank()) {
+            lista.add(new EvidenciaResponseDTO(
+                    null,
+                    chamado.getImagemChamado(),
+                    "Foto de abertura do chamado",
+                    null,
+                    chamado.getDataAberturaChamado()
+            ));
+        }
+
+        evidenciaRepository.findByChamadoIdOrderByDataEnvioAsc(chamado.getId())
+                .forEach(evidencia -> lista.add(new EvidenciaResponseDTO(evidencia)));
+
+        return lista;
+    }
+
+    @Transactional
+    public EvidenciaResponseDTO adicionarEvidencia(Long chamadoId, UsuarioModel usuario, EvidenciaRequestDTO evidenciaDTO) {
+        acessoService.validarAcessoChamado(usuario, chamadoId);
+
+        ChamadoModel chamado = chamadoRepository.findById(chamadoId)
+                .orElseThrow(() -> new IllegalArgumentException("Chamado não localizado ❌"));
+
+        EvidenciaModel evidencia = new EvidenciaModel();
+        evidencia.setChamado(chamado);
+        evidencia.setImagem(evidenciaDTO.getImagem());
+        evidencia.setNomeArquivo(evidenciaDTO.getNomeArquivo());
+        evidencia.setEnviadoPor(usuario.getNome());
+
+        return new EvidenciaResponseDTO(evidenciaRepository.save(evidencia));
     }
 
     @Transactional

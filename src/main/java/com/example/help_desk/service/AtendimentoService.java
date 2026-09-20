@@ -25,7 +25,9 @@ public class AtendimentoService {
 
     static {
         TRANSICOES.put(StatusChamado.ABERTO, Set.of(StatusChamado.EM_TRIAGEM));
-        TRANSICOES.put(StatusChamado.EM_TRIAGEM, Set.of(StatusChamado.EM_ATENDIMENTO));
+        // N1 (EM_TRIAGEM) agora pode tanto escalonar para N2 (EM_ATENDIMENTO)
+        // quanto finalizar diretamente, igual N2/N3 já podiam fazer.
+        TRANSICOES.put(StatusChamado.EM_TRIAGEM, Set.of(StatusChamado.EM_ATENDIMENTO, StatusChamado.RESOLVIDO));
         TRANSICOES.put(StatusChamado.EM_ATENDIMENTO, Set.of(StatusChamado.PENDENTE_EVIDENCIA, StatusChamado.RESOLVIDO));
         TRANSICOES.put(StatusChamado.PENDENTE_EVIDENCIA, Set.of(StatusChamado.EM_ATENDIMENTO, StatusChamado.RESOLVIDO));
         TRANSICOES.put(StatusChamado.RESOLVIDO, Set.of(StatusChamado.FECHADO, StatusChamado.EM_ATENDIMENTO));
