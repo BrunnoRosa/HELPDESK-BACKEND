@@ -6,6 +6,7 @@ import com.example.help_desk.model.enums.NivelSuporte;
 import com.example.help_desk.model.enums.Ocorrencia;
 
 import java.time.LocalDateTime;
+import java.util.List;
 
 public class ChamadoResponseDTO {
     private Long id;
@@ -15,6 +16,11 @@ public class ChamadoResponseDTO {
     private Criticidade prioridadeChamado;
     private LocalDateTime dataAberturaChamado;
     private String imagemChamado;
+
+    // Lista de todas as fotos/arquivos anexados ao chamado (a foto de
+    // abertura + cada evidência enviada depois), preenchida por quem monta
+    // a resposta (ChamadoService) - nem toda consulta precisa dela.
+    private List<EvidenciaResponseDTO> evidencias;
 
     // Novos campos adicionados
     private String statusChamado;
@@ -63,6 +69,9 @@ public class ChamadoResponseDTO {
 
     public String getImagemChamado() { return imagemChamado; }
     public void setImagemChamado(String imagemChamado) {this.imagemChamado = imagemChamado; }
+
+    public List<EvidenciaResponseDTO> getEvidencias() { return evidencias; }
+    public void setEvidencias(List<EvidenciaResponseDTO> evidencias) { this.evidencias = evidencias; }
 
     public String getStatusChamado() { return statusChamado; }
     public void setStatusChamado(String statusChamado) { this.statusChamado = statusChamado; }
