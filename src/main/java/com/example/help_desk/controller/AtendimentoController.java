@@ -36,7 +36,7 @@ public class AtendimentoController {
     }
 
     @PutMapping
-    @PreAuthorize("hasAnyRole('TECNICO','ADMINISTRADOR')")
+    @PreAuthorize("hasAnyAuthority('TECNICO', 'ROLE_TECNICO', 'ADMINISTRADOR', 'ROLE_ADMINISTRADOR', 'ADMIN', 'ROLE_ADMIN')")
     public ResponseEntity<AtendimentoResponseDTO> atualizar(
             @Valid @RequestBody AtendimentoRequestDTO dto,
             @AuthenticationPrincipal UsuarioModel usuario

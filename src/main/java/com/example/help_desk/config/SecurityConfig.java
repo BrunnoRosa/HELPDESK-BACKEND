@@ -54,7 +54,7 @@ public class SecurityConfig {
                         .requestMatchers(HttpMethod.PUT, "/usuarios/alterar-senha").authenticated()
 
                         // 3. Restringe o painel administrativo apenas para ADMINISTRADOR
-                        .requestMatchers("/admin/**").hasRole("ADMINISTRADOR")
+                        .requestMatchers("/admin/**").hasAnyAuthority("ADMINISTRADOR", "ROLE_ADMINISTRADOR", "ADMIN", "ROLE_ADMIN")
 
                         // 4. Exige autenticação para qualquer outra requisição
                         .anyRequest().authenticated()
